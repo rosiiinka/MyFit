@@ -9,10 +9,13 @@ class RegisterForm extends Component {
         super(props)
         this.state = {
             users: [],
-            username: '',
-            password: '',
-            firsName: '',
-            lastName: ''
+            user: {
+                id: 1,
+                username: 'dasda',
+                password: 'dasd',
+                firsName: 'dasdas',
+                lastName: 'dasda'
+            }
         }
         UserStore.on('change', () => {
             this.getAll()
@@ -31,7 +34,7 @@ class RegisterForm extends Component {
 
     register (event) {
         event.preventDefault()
-        UserAction.register(' dadassdas')
+        UserAction.register(this.state.user)
         this.setState({
             users: []
         })

@@ -9,15 +9,13 @@ class UserStore extends EventEmitter {
         ]
     }
 
-    
     register(user) {
-        console.log(user);
-
+        this.users.push(user)
         this.emit('change')
     }
 
     getAllUsers() {
-        return this.users
+        return this.users.slice(0)
     }
 
     handleAction(action) {
