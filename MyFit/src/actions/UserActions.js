@@ -6,7 +6,7 @@ const userActions = {
             type: 'REGISTER_USER',
             title
         })
-    } 
+    }  
 }
 
 export default userActions

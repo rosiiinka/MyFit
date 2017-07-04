@@ -8,7 +8,7 @@ class UserStore extends EventEmitter {
             {id: 1, username: 'username', password: 'password', firstName: 'firstName', lastName: 'lastName', picture: 'picture'}
         ]
     }
-
+ 
     register(user) {
         this.users.push(user)
         this.emit('change')

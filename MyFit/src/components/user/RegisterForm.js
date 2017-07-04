@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import InputText from '../common/InputText'
-import InputPassword from '../common/InputPassword'
 import UserStore from '../../stores/UserStore'
 import UserAction from '../../actions/UserActions'
 
@@ -9,13 +7,10 @@ class RegisterForm extends Component {
         super(props)
         this.state = {
             users: [],
-            user: {
-                id: 1,
-                username: 'dasda',
-                password: 'dasd',
-                firsName: 'dasdas',
-                lastName: 'dasda'
-            }
+            username: '',
+            password: '',
+            firsName: '',
+            lastName: ''
         }
         UserStore.on('change', () => {
             this.getAll()
@@ -34,10 +29,15 @@ class RegisterForm extends Component {
 
     register (event) {
         event.preventDefault()
-        UserAction.register(this.state.user)
-        this.setState({
-            users: []
-        })
+        let user = {
+            username: this.state.username,
+            password: this.state.password,
+            firsName: this.state.firsName,
+            lastName: this.state.lastName
+        }
+
+        UserAction.register(user)
+        
     }
 
     handleChange(event) {
@@ -47,10 +47,10 @@ class RegisterForm extends Component {
         let value = target.value
 
         this.setState({
-            field: value
+            username: value
         })
 
-        console.log(value)
+        console.log(this.state.username)
     }
 
     render () {
@@ -87,22 +87,22 @@ class RegisterForm extends Component {
 
                     <fieldset className="form-group">
                         <label className="control-label" htmlFor="disabledInput">Password</label>
-                        <input className="form-control" type="password" value={ this.state.password } onChange={ this.handleChange.bind(this) }/>
+                        <input className="form-control" type="password" name="password" value={ this.state.password } onChange={ this.handleChange.bind(this) }/>
                     </fieldset>
 
                     <fieldset className="form-group">
                         <label className="control-label" htmlFor="disabledInput">Conf Password</label>
-                        <input className="form-control" type="password" value={ this.state.password } />
+                        <input className="form-control" type="password" name="password" value={ this.state.password } onChange={ this.handleChange.bind(this) }/>
                     </fieldset>
 
                     <fieldset className="form-group">
                         <label className="control-label" htmlFor="disabledInput">FirstName</label>
-                        <input className="form-control" value={ this.state.firsName } />
+                        <input className="form-control" type="text" name="firstName" value={ this.state.firstName } onChange={ this.handleChange.bind(this) }/>
                     </fieldset>
 
                     <fieldset className="form-group">
                         <label className="control-label" htmlFor="disabledInput">LastName</label>
-                        <input className="form-control" value={ this.state.lastName } />
+                        <input className="form-control" type="text" name="lastName" value={ this.state.lastName } onChange={ this.handleChange.bind(this) }/>
                     </fieldset>
 
                     <fieldset className="form-group">
