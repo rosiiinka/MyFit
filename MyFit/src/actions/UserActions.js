@@ -1,21 +1,12 @@
-import dispatcher from '../utilities/Dispatcher'
+import dispatcher from '../dispatcher'
 
-let userActions = {
-  register: (username, password, firstName, lastName) => {
-    dispatcher.dispatch({
-      type: 'REGISTER_USER',
-      username,
-      password,
-      firstName,
-      lastName
-    })
-  },
-  getById: (id) => {
-    dispatcher.dispatch({
-      type: 'GET_BY_ID',
-      id
-    })
-  }
+const userActions = {
+    register: (title) => {
+        dispatcher.dispatch({
+            type: 'REGISTER_USER',
+            title
+        })
+    }
 }
 
 export default userActions
