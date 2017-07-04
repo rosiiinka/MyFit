@@ -5,9 +5,17 @@ class Navbar extends Component {
     render () {
         return (
             <nav>
-                <Link to='/'>Home</Link>
-                <Link to='/user/register'>Register</Link>
-                <Link to='/user/login'>Login</Link>
+                <ul>
+                    <li>
+                        <Link to='/'>Home</Link>
+                    </li>
+                    <li>
+                        <Link to='/user/register'>Register</Link>    
+                    </li>
+                    <li>
+                        <Link to='/user/login'>Login</Link>    
+                    </li>
+                </ul>
             </nav>
         )
     }

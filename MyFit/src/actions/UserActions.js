@@ -9,6 +9,12 @@ let userActions = {
       firstName,
       lastName
     })
+  },
+  getById: (id) => {
+    dispatcher.dispatch({
+      type: 'GET_BY_ID',
+      id
+    })
   }
 }
 

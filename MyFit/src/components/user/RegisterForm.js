@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import Input from '../common/Input'
+import InputText from '../common/InputText'
+import InputPassword from '../common/InputPassword'
 import UserActions from '../../actions/UserActions'
 
 class RegisterForm extends Component {
@@ -10,6 +11,7 @@ class RegisterForm extends Component {
             user: {
                 username: '',
                 password: '',
+                confirmPassword: '',
                 firstName: '',
                 lastName: '',
                 picture: ''
@@ -21,7 +23,6 @@ class RegisterForm extends Component {
         let target = event.target
         let field = target.name
         let value = target.value
-        console.log(`${field} ${value}`)
         let user = this.state.user
         user[field] = value
 
@@ -33,23 +34,20 @@ class RegisterForm extends Component {
     registerUser (event) {
         event.preventDefault()
         let user = this.state.user
+        console.log(UserActions)
         UserActions.register(user.username, user.password, user.firstName, user.lastName)
+        // this.props.history.push('/')
     }
 
     render () {
         return (
-            <form>
-                <input
-                    type='text'
-                    name='username'
-                    value={this.state.user.username}
-                    onChange={this.handleChange.bind(this)} />
-                <input
-                    type='text'
-                    name='password'
-                    value={this.state.user.username}
-                    onChange={this.handleChange.bind(this)} />
-                <input type='submit' onClick={this.registerUser.bind(this)} value='Register' />
+            <form className='container'>
+                <InputText name='username' placeholder='Username' handleChange={this.handleChange.bind(this)} value={this.state.user.username}/>
+                <InputPassword name='password' placeholder='Password' handleChange={this.handleChange.bind(this)} value={this.state.user.password}/>
+                <InputPassword name='confirmPassword' placeholder='Confirm Password' handleChange={this.handleChange.bind(this)} value={this.state.user.confirmPassword}/>
+                <InputText name='firstName' placeholder='First Name' handleChange={this.handleChange.bind(this)} value={this.state.user.firstName}/>
+                <InputText name='lastName' placeholder='Last Name' handleChange={this.handleChange.bind(this)} value={this.state.user.lastName}/>
+                <input type='submit' onClick={this.registerUser.bind(this)} value='Register' className='btn btn-default' />
             </form>
         )
     }
