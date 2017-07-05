@@ -8,7 +8,7 @@ class RegisterForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            user: {
+            users: [],
                 username: 'vasko',
                 password: '123',
                 confirmPassword: '',
@@ -25,7 +25,7 @@ class RegisterForm extends Component {
         let field = target.name
         let value = target.value
         
-        let user = this.state
+        let user = this.state.user
 
         user[field] = value
         this.setState({ user: user })
