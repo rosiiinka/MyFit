@@ -1,10 +1,10 @@
 import dispatcher from '../dispatcher'
 
 const userActions = {
-    register: (title) => {
+    register: (user) => {
         dispatcher.dispatch({
             type: 'REGISTER_USER',
-            title
+            user
         })
     }  
 }

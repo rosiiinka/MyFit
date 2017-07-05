@@ -1,38 +1,26 @@
 import { EventEmitter } from 'events'
 import dispatcher from '../dispatcher'
+import UserData from '../database/UserData'
 
 class UserStore extends EventEmitter {
     constructor(props) {
         super(props)
-        this.users = [
-            {id: 1, username: 'username', password: 'password', firstName: 'firstName', lastName: 'lastName', picture: 'picture'}
-        ]
     }
  
-    register(user) {
-        this.users.push(user)
+    register (user) {
+        console.log(user)
+        UserData.register(user)
         this.emit('change')
     }
 
-    getAllUsers() {
-        return this.users.slice(0)
-    }
-
-    handleAction(action) {
-        switch(action.type) {
+    handleAction (action) {
+        switch (action.type) {
             case 'REGISTER_USER': {
-                this.register(action.title)
-                break;
+                console.log('asd')
+                this.register(action.user)
+                break
             }
-
-            case 'DELETE_BOOK': {
-                this.deleteBook(action.id)
-                break;
-            }
-
-            default : {
-                break;
-            }
+            default: break
         }
     }
 }

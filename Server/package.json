@@ -1,0 +1,24 @@
+{
+  "name": "forum",
+  "version": "0.0.1",
+  "description": "simple forum",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "1.17.2",
+    "bootstrap": "3.3.7",
+    "cookie-parser": "1.4.3",
+    "cors": "^2.8.3",
+    "express": "4.15.3",
+    "express-handlebars": "3.0.0",
+    "express-session": "1.15.3",
+    "mongoose": "4.10.5",
+    "passport": "0.3.2",
+    "passport-local": "1.0.0",
+    "standard": "^10.0.2"
+  }
+}
