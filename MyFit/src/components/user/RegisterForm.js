@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import UserAction from '../../actions/UserActions'
+import UserActions from '../../actions/UserActions'
 import UserStore from '../../stores/UserStore'
 import InputText from '../common/InputText'
 import InputPassword from '../common/InputPassword'
+import Auth from '../../utilities/Auth'
 
 class RegisterForm extends Component {
     constructor(props) {
@@ -17,6 +18,20 @@ class RegisterForm extends Component {
                 picture: ''
             }
         }
+
+        this.handleUserRegistration = this.handleUserRegistration.bind(this)
+
+        UserStore.on(
+            UserStore.eventTypes.USER_REGISTERED,
+            this.handleUserRegistration
+        )
+    }
+
+    componentWillUnmount() {
+        UserStore.removeListener(
+            UserStore.eventTypes.USER_REGISTERED,
+            this.handleUserRegistration
+        )
     }
 
     handleChange(event) {
@@ -34,8 +49,15 @@ class RegisterForm extends Component {
     registerUser(event) {
         event.preventDefault()
         let user = this.state.user
-        UserAction.register(user)
+        UserActions.register(user)
         // this.props.history.push('/')
+    }
+
+    handleUserRegistration(data) {
+        if (data.success) {
+            Auth.authenticate(data.createdUser.token, data.createdUser.username)
+            UserStore.emit('setUser')
+        }
     }
 
     render() {

@@ -8,16 +8,25 @@ class UserStore extends EventEmitter {
     }
  
     register (user) {
-        console.log(user)
-        UserData.register(user)
-        this.emit('change')
+        UserData
+        .register(user)
+        .then(data => this.emit(this.eventTypes.USER_REGISTERED, data))
+    }
+
+    getByUsername (id) {
+        UserData.getById(id).then(user => {
+            return user
+        })
     }
 
     handleAction (action) {
         switch (action.type) {
             case 'REGISTER_USER': {
-                console.log('asd')
                 this.register(action.user)
+                break
+            }
+            case 'GET_BY_USERNAME': {
+                this.getByUsername(action.id)
                 break
             }
             default: break
@@ -26,5 +35,10 @@ class UserStore extends EventEmitter {
 }
 
 let userStore = new UserStore()
+
+userStore.eventTypes = {
+    USER_REGISTERED: 'user_registered'
+}
+
 dispatcher.register(userStore.handleAction.bind(userStore))
 export default userStore

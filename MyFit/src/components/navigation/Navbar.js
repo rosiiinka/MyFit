@@ -1,7 +1,29 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import UserStore from '../../stores/UserStore'
 
 class Navbar extends Component {
+    constructor (props) {
+        super(props)
+
+        this.state = {
+            currentUser: ''
+        }
+
+        this.getCurrentUser = this.getCurrentUser.bind(this)
+
+        UserStore.on(
+            'setUser',
+            this.getCurrentUser
+        )
+    }
+
+    getCurrentUser () {
+        this.setState({
+            currentUser: window.localStorage.getItem('currentUser')
+        })
+    }
+
     render () {
         return (
             <nav className="navbar navbar-inverse">
@@ -25,6 +47,7 @@ class Navbar extends Component {
                             <li><Link to='/profile'>Contacts</Link></li>
                             
                         </ul>
+                        <h1>{this.state.currentUser}</h1>
                         <ul className="nav navbar-nav navbar-right">
                             <li><Link to='/user/login'>Login</Link></li>
                             <li><Link to='/user/register'>Register</Link></li>
