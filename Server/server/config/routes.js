@@ -4,4 +4,5 @@ const multer = require('multer')
 
 module.exports = (app) => {
   app.post('/users/register', handlers.user.register)
+  app.get('/users/:username', handlers.user.getByUsername)
 }

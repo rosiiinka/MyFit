@@ -9,6 +9,7 @@ let userSchema = mongoose.Schema(({
   hashedPassword: { type: String, required: ERROR_VALIDATION_MESSAGE },
   salt: { type: String, required: ERROR_VALIDATION_MESSAGE },
   image: { type: String },
+  token: { type: String },
   notes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Note' }]
 }))
 
