@@ -8,7 +8,7 @@ export default class LogoutPage extends Component {
         super(props)
 
         this.logout()
-    }
+    } 
 
     logout() {
         let username = window.localStorage.getItem('currentUser')
