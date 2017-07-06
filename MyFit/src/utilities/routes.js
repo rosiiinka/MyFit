@@ -9,6 +9,7 @@ import RegisterPage from '../components/user/RegisterPage'
 import PageNotFound from '../components/error/PageNotFound'
 import ProfilePage from '../components/profile/ProfilePage'
 import NotesPage from '../components/notes/NotesPage'
+import ModesPage from '../components/modes/ModesPage'
 
 export default () => (
     <Switch>
@@ -20,6 +21,7 @@ export default () => (
         <Route path='/user/logout' component={LogoutPage} />
         <Route path='/user/profile' component={ProfilePage} />
         <Route path='/user/notes' component={NotesPage} />
+        <Route path='/modes' component={ModesPage} />
         <Route component={PageNotFound} />
     </Switch>
 )
