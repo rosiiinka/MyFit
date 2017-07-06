@@ -1,7 +1,7 @@
 const Product = require('mongoose').model('Product')
 
 module.exports.add = (req, res) => {
-  let newProduct = {
+  let newProduct = { 
     name: req.body.name,
     calories: Number(req.body.calories)
   }

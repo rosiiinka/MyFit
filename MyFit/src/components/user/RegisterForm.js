@@ -10,11 +10,11 @@ class RegisterForm extends Component {
         super(props)
         this.state = {
             user: {
-                username: 'vasko',
-                password: '123',
+                username: '',
+                password: '',
                 confirmPassword: '',
-                firstName: 'vasil',
-                lastName: 'nikolov',
+                firstName: '',
+                lastName: '',
                 picture: ''
             },
             error: ''
@@ -50,7 +50,14 @@ class RegisterForm extends Component {
     registerUser(event) {
         event.preventDefault()
         let user = this.state.user
-        UserActions.register(user)
+        if(user.password === user.confirmPassword) {
+            UserActions.register(user)
+        } else {
+            this.setState({
+                error: 'Your password do not match'
+            })
+        }
+        
     }
 
     handleUserRegistration(data) {
@@ -67,15 +74,18 @@ class RegisterForm extends Component {
 
     render() {
         return (
-            <form className='container'>
-                <InputText name='username' placeholder='Username' handleChange={this.handleChange.bind(this)} value={this.state.user.username} />
-                <InputPassword name='password' placeholder='Password' handleChange={this.handleChange.bind(this)} value={this.state.user.password} />
-                <InputPassword name='confirmPassword' placeholder='Confirm Password' handleChange={this.handleChange.bind(this)} value={this.state.user.confirmPassword} />
-                <InputText name='firstName' placeholder='First Name' handleChange={this.handleChange.bind(this)} value={this.state.user.firstName} />
-                <InputText name='lastName' placeholder='Last Name' handleChange={this.handleChange.bind(this)} value={this.state.user.lastName} />
-                <div>{this.state.error}</div>
-                <input type='submit' onClick={this.registerUser.bind(this)} value='Register' className='btn btn-default' />
-            </form>
+            <div>
+                { this.state.error !== '' ? <h1 id="error">{ this.state.error }</h1> : false }
+                <form className='container'>
+                    <InputText name='username' placeholder='Username' handleChange={this.handleChange.bind(this)} value={this.state.user.username} />
+                    <InputPassword name='password' placeholder='Password' handleChange={this.handleChange.bind(this)} value={this.state.user.password} />
+                    <InputPassword name='confirmPassword' placeholder='Confirm Password' handleChange={this.handleChange.bind(this)} value={this.state.user.confirmPassword} />
+                    <InputText name='firstName' placeholder='First Name' handleChange={this.handleChange.bind(this)} value={this.state.user.firstName} />
+                    <InputText name='lastName' placeholder='Last Name' handleChange={this.handleChange.bind(this)} value={this.state.user.lastName} />
+                    <input type='submit' onClick={this.registerUser.bind(this)} value='Register' className='btn btn-default' />
+                </form>
+            </div>
+            
         )
     }
 }
