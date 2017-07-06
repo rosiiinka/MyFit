@@ -12,3 +12,7 @@ nav ul {
   display: flex;
   justify-content: space-around;
 }
+
+.row iframe {
+  width: 100%
+}

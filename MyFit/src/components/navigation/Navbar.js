@@ -40,17 +40,22 @@ class Navbar extends Component {
 
                     <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
                         <ul className="nav navbar-nav">
-                            <li className="active"><Link to='/about'>About us</Link></li>
+                            <li><Link to='/about'>About us</Link></li>
                             <li><Link to='/contacts'>Contacts</Link></li>
                             <li><Link to='/user/profile'>Profile</Link></li>
                             <li><Link to='/user/notes'>Notes</Link></li>
-                            <li><Link to='/profile'>Contacts</Link></li>
                         </ul>
-                        { !this.getCurrentUser ? <h1>{this.state.currentUser}</h1> : false }
-                        <ul className="nav navbar-nav navbar-right">
-                            <li><Link to='/user/login'>Login</Link></li>
-                            <li><Link to='/user/register'>Register</Link></li>
-                        </ul>
+
+                        { !this.state.currentUser ? 
+                            <ul className="nav navbar-nav navbar-right">
+                                <li><Link to="/user/profile">Profile</Link></li>
+                            </ul>
+                              :  
+                            <ul className="nav navbar-nav navbar-right">
+                                <li><Link to='/user/login'>Login</Link></li>
+                                <li><Link to='/user/register'>Register</Link></li>
+                            </ul>
+                        }
                     </div>
                 </div>
             </nav>
