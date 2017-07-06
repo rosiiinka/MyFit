@@ -13,6 +13,12 @@ const userActions = {
             user
         })
     },
+    logout: (user) => {
+        dispatcher.dispatch({
+            type: 'LOGOUT_USER',
+            user
+        })
+    },
     getById: (id) => {
         dispatcher.dispatch({
             type: 'GET_BY_ID',

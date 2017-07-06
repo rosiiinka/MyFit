@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import UserStore from '../../stores/UserStore'
+import Auth from '../../utilities/Auth'
 
 class Navbar extends Component {
     constructor (props) {
@@ -8,32 +9,33 @@ class Navbar extends Component {
 
         this.state = {
             currentUser: '',
-            isLoggedIn: false
+            loggedIn: false
         }
 
         this.getCurrentUser = this.getCurrentUser.bind(this)
+        this.logOut = this.logOut.bind(this)
 
         UserStore.on(
             UserStore.eventTypes.SET_USER,
             this.getCurrentUser
         )
-    }
 
-    logIn() {
-        this.setState({
-            isLoggedIn: true
-        })
-    }
-
-    logOut() {
-        this.setState({
-            isLoggedIn: false
-        })
+        UserStore.on(
+            UserStore.eventTypes.LOGOUT_USER,
+            this.logOut
+        )    
     }
 
     getCurrentUser () {
         this.setState({
             currentUser: window.localStorage.getItem('currentUser')
+        })
+    }
+
+    logOut() {
+        Auth.deAuthenticateUser()
+        this.setState({
+            currentUser: ''
         })
     }
 
@@ -61,7 +63,7 @@ class Navbar extends Component {
                         { this.state.currentUser !== '' ? 
                             <ul className="nav navbar-nav navbar-right">
                                 <li><Link to="/user/profile">Profile</Link></li>
-                                <li><Link to="/user/logout" onClick={}>LogOut</Link></li>
+                                <li><Link to="/user/logout">LogOut</Link></li>
                             </ul>
                               :  
                             <ul className="nav navbar-nav navbar-right">

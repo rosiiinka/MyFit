@@ -10,8 +10,8 @@ class LoginForm extends Component {
         super(props)
         this.state = {
             user: {
-                username: 'vasko',
-                password: '123'
+                username: '',
+                password: ''
             },
             error: ''
         }
@@ -40,7 +40,9 @@ class LoginForm extends Component {
         let user = this.state.user
 
         user[field] = value
-        this.setState({ user: user })
+        this.setState({ 
+            user: user
+        })
     }
 
     loginUser(event) {

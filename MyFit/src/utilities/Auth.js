@@ -5,6 +5,7 @@ class Auth {
     static authenticate (token, username) {
         window.localStorage.setItem('token', token)
         window.localStorage.setItem('currentUser', username)
+        window.localStorage.setItem('lg', true)
     }
 
     static isAuthenticated (username) {

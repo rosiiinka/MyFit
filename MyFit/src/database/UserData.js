@@ -20,5 +20,16 @@ module.exports = {
                 'Content-Type': 'application/json'
             }
         }).then(res => res.json())
+    },
+    logout: (username) => {
+        return window.fetch('http://localhost:1337/users/logout', {
+            method: 'POST',
+            body: JSON.stringify(username),
+            mode: 'cors',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json())
     }
 }
