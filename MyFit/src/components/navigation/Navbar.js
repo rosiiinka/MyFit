@@ -8,7 +8,7 @@ class Navbar extends Component {
         super(props)
 
         this.state = {
-            currentUser: '',
+            currentUser: window.localStorage.getItem('currentUser'),
             loggedIn: false
         }
 
