@@ -4,5 +4,6 @@ const multer = require('multer')
 
 module.exports = (app) => {
   app.post('/users/register', handlers.user.register)
-  app.get('/users/:username', handlers.user.getByUsername)
+  app.post('/users/login', handlers.user.login)
+  app.post('/users/:username', handlers.user.getByUsername)
 }

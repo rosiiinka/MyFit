@@ -3,6 +3,9 @@ import Navbar from './components/navigation/Navbar'
 import Routes from './utilities/routes'
 
 class App extends Component {
+  constructor (props) {
+    super(props)
+  }
   render () {
     return (
       <div>

@@ -13,7 +13,7 @@ class Navbar extends Component {
         this.getCurrentUser = this.getCurrentUser.bind(this)
 
         UserStore.on(
-            'setUser',
+            UserStore.eventTypes.SET_USER,
             this.getCurrentUser
         )
     }

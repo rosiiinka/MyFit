@@ -7,6 +7,12 @@ const userActions = {
             user
         })
     },
+    login: (user) => {
+        dispatcher.dispatch({
+            type: 'LOGIN_USER',
+            user
+        })
+    },
     getById: (id) => {
         dispatcher.dispatch({
             type: 'GET_BY_ID',

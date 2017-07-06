@@ -18,7 +18,6 @@ export default () => (
         <Route path='/user/login' component={LoginPage} />
         <Route path='/user/profile' component={ProfilePage} />
         <Route path='/user/notes' component={NotesPage} />
-
         <Route component={PageNotFound} />
     </Switch>
 )

@@ -16,20 +16,21 @@ class RegisterForm extends Component {
                 firstName: 'vasil',
                 lastName: 'nikolov',
                 picture: ''
-            }
+            },
+            error: ''
         }
 
         this.handleUserRegistration = this.handleUserRegistration.bind(this)
 
         UserStore.on(
-            UserStore.eventTypes.USER_REGISTERED,
+            UserStore.eventTypes.REGISTER_USER,
             this.handleUserRegistration
         )
     }
 
     componentWillUnmount() {
         UserStore.removeListener(
-            UserStore.eventTypes.USER_REGISTERED,
+            UserStore.eventTypes.REGISTER_USER,
             this.handleUserRegistration
         )
     }
@@ -50,13 +51,17 @@ class RegisterForm extends Component {
         event.preventDefault()
         let user = this.state.user
         UserActions.register(user)
-        // this.props.history.push('/')
     }
 
     handleUserRegistration(data) {
         if (data.success) {
             Auth.authenticate(data.createdUser.token, data.createdUser.username)
-            UserStore.emit('setUser')
+            UserStore.emit(UserStore.eventTypes.SET_USER)
+            this.props.history.push('/')
+        } else {
+            this.setState({
+                error: data.message.errmsg
+            })
         }
     }
 
@@ -68,6 +73,7 @@ class RegisterForm extends Component {
                 <InputPassword name='confirmPassword' placeholder='Confirm Password' handleChange={this.handleChange.bind(this)} value={this.state.user.confirmPassword} />
                 <InputText name='firstName' placeholder='First Name' handleChange={this.handleChange.bind(this)} value={this.state.user.firstName} />
                 <InputText name='lastName' placeholder='Last Name' handleChange={this.handleChange.bind(this)} value={this.state.user.lastName} />
+                <div>{this.state.error}</div>
                 <input type='submit' onClick={this.registerUser.bind(this)} value='Register' className='btn btn-default' />
             </form>
         )

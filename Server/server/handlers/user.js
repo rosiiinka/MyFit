@@ -1,6 +1,39 @@
 let User = require('mongoose').model('User')
 let encryption = require('../utilities/encryption')
 
+module.exports.login = (req, res) => {
+  User.findOne({ username: req.body.username }).then(user => {
+    if (user) {
+      let hashedPassword = encryption.generateHashedPassword(user.salt, req.body.password)
+      if (user.hashedPassword === hashedPassword) {
+        let token = encryption.generateHashedPassword(req.body.username, req.body.password)
+
+        user.token = token
+        user.save()
+
+        return res.status(200).json({
+          success: true,
+          message: 'successfuly logged in',
+          user: {
+            username: user.username,
+            token: token
+          }
+        })
+      } else {
+        return res.status(200).json({
+          success: false,
+          message: 'invalid credentials'
+        })
+      }
+    } else {
+      return res.status(200).json({
+        success: false,
+        message: 'invalid credentials'
+      })
+    }
+  })
+}
+
 module.exports.register = (req, res) => {
   let salt = encryption.gelerateSalt()
   let hashedPassword = encryption.generateHashedPassword(salt, req.body.password)
@@ -25,7 +58,10 @@ module.exports.register = (req, res) => {
       })
     })
     .catch(err => {
-      console.log(err)
+      return res.status(200).json({
+        success: false,
+        message: err
+      })
     })
 }
 

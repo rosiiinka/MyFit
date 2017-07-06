@@ -1,25 +1,24 @@
 module.exports = {
-    register (user) {
+    register: (user) => {
         return window.fetch('http://localhost:1337/users/register', {
             method: 'POST',
-            mod: 'cors',
             body: JSON.stringify(user),
+            mode: 'cors',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             }
-        })
-        .then(res => res.json())
+        }).then(res => res.json())
     },
-    getByUsername (username) {
-        return window.fetch(`http://localhost:1337/users/${username}`, {
-            method: 'GET',
-            mod: 'cors',
+    login: (user) => {
+        return window.fetch('http://localhost:1337/users/login', {
+            method: 'POST',
+            body: JSON.stringify(user),
+            mode: 'cors',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             }
-        })
-        .then(res => res.json())
+        }).then(res => res.json())
     }
 }
