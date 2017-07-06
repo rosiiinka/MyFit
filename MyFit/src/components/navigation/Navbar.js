@@ -23,7 +23,7 @@ class Navbar extends Component {
         UserStore.on(
             UserStore.eventTypes.LOGOUT_USER,
             this.logOut
-        )    
+        )
     }
 
     getCurrentUser () {
@@ -40,7 +40,7 @@ class Navbar extends Component {
     }
 
     isItLogedIn() {
-        let { currentUser } = this.state 
+        let { currentUser } = this.state
 
         if(currentUser !== '' && currentUser !== null && currentUser !== undefined) {
             return true
@@ -66,14 +66,15 @@ class Navbar extends Component {
                             <li><Link to='/about'>About us</Link></li>
                             <li><Link to='/contacts'>Contacts</Link></li>
                             { this.isItLogedIn() ? <li><Link to='/user/notes'>Notes</Link></li> : false }
+                            { this.isItLogedIn() ? <li><Link to='/modes'>Modes</Link></li> : false }
                         </ul>
 
-                        { this.isItLogedIn() ? 
+                        { this.isItLogedIn() ?
                             <ul className="nav navbar-nav navbar-right">
                                 <li><Link to="/user/profile">Profile</Link></li>
                                 <li><Link to="/user/logout">LogOut</Link></li>
                             </ul>
-                              :  
+                              :
                             <ul className="nav navbar-nav navbar-right">
                                 <li><Link to='/user/login'>Login</Link></li>
                                 <li><Link to='/user/register'>Register</Link></li>
