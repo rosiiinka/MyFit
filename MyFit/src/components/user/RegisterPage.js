@@ -4,6 +4,7 @@ import RegisterForm from './RegisterForm'
 class RegisterPage extends Component {
     constructor (props) {
         super(props)
+        
     }
     render () {
         return (

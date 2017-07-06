@@ -1,7 +1,9 @@
-const UserHandler = require('./user')
+const userHandler = require('./user')
 const noteHandler = require('./note')
+const productHandler = require('./product')
 
 module.exports = {
-  user: UserHandler,
-  note: noteHandler
+  user: userHandler,
+  note: noteHandler,
+  product: productHandler
 }

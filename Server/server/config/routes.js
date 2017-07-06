@@ -7,4 +7,6 @@ module.exports = (app) => {
   app.post('/users/login', handlers.user.login)
   app.post('/users/logout', handlers.user.logout)
   app.post('/users/:username', handlers.user.getByUsername)
+
+  app.post('/products/add', handlers.product.add)
 }
