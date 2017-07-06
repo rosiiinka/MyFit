@@ -16,6 +16,10 @@ class Auth {
             return false
         }
     }
+
+    static deAuthenticateUser() {
+        return window.localStorage.clear()
+    }
 }
 
 export default Auth

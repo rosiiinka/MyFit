@@ -7,7 +7,8 @@ class Navbar extends Component {
         super(props)
 
         this.state = {
-            currentUser: ''
+            currentUser: '',
+            isLoggedIn: false
         }
 
         this.getCurrentUser = this.getCurrentUser.bind(this)
@@ -16,6 +17,18 @@ class Navbar extends Component {
             UserStore.eventTypes.SET_USER,
             this.getCurrentUser
         )
+    }
+
+    logIn() {
+        this.setState({
+            isLoggedIn: true
+        })
+    }
+
+    logOut() {
+        this.setState({
+            isLoggedIn: false
+        })
     }
 
     getCurrentUser () {
@@ -42,13 +55,13 @@ class Navbar extends Component {
                         <ul className="nav navbar-nav">
                             <li><Link to='/about'>About us</Link></li>
                             <li><Link to='/contacts'>Contacts</Link></li>
-                            <li><Link to='/user/profile'>Profile</Link></li>
                             <li><Link to='/user/notes'>Notes</Link></li>
                         </ul>
 
-                        { !this.state.currentUser ? 
+                        { this.state.currentUser !== '' ? 
                             <ul className="nav navbar-nav navbar-right">
                                 <li><Link to="/user/profile">Profile</Link></li>
+                                <li><Link to="/user/logout" onClick={}>LogOut</Link></li>
                             </ul>
                               :  
                             <ul className="nav navbar-nav navbar-right">
