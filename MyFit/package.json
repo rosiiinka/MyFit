@@ -9,6 +9,7 @@
     "fast-deep-equal": "1.0.0",
     "flux": "3.1.2",
     "is-promise": "2.1.0",
+    "jquery": "^3.2.1",
     "js-base64": "2.1.9",
     "json-schema-traverse": "0.3.1",
     "mimic-fn": "1.1.0",

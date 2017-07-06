@@ -45,9 +45,8 @@ class Navbar extends Component {
                             <li><Link to='/user/profile'>Profile</Link></li>
                             <li><Link to='/user/notes'>Notes</Link></li>
                             <li><Link to='/profile'>Contacts</Link></li>
-                            
                         </ul>
-                        <h1>{this.state.currentUser}</h1>
+                        { !this.getCurrentUser ? <h1>{this.state.currentUser}</h1> : false }
                         <ul className="nav navbar-nav navbar-right">
                             <li><Link to='/user/login'>Login</Link></li>
                             <li><Link to='/user/register'>Register</Link></li>
