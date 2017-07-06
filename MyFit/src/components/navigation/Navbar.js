@@ -39,6 +39,14 @@ class Navbar extends Component {
         })
     }
 
+    isItLogedIn() {
+        let { currentUser } = this.state 
+
+        if(currentUser !== '' && currentUser !== null && currentUser !== undefined) {
+            return true
+        }
+    }
+
     render () {
         return (
             <nav className="navbar navbar-inverse">
@@ -57,10 +65,10 @@ class Navbar extends Component {
                         <ul className="nav navbar-nav">
                             <li><Link to='/about'>About us</Link></li>
                             <li><Link to='/contacts'>Contacts</Link></li>
-                            <li><Link to='/user/notes'>Notes</Link></li>
+                            { this.isItLogedIn() ? <li><Link to='/user/notes'>Notes</Link></li> : false }
                         </ul>
 
-                        { this.state.currentUser !== '' ? 
+                        { this.isItLogedIn() ? 
                             <ul className="nav navbar-nav navbar-right">
                                 <li><Link to="/user/profile">Profile</Link></li>
                                 <li><Link to="/user/logout">LogOut</Link></li>
