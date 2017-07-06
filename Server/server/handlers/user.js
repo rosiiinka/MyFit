@@ -65,6 +65,24 @@ module.exports.register = (req, res) => {
     })
 }
 
+module.exports.logout = (req, res) => {
+  User.findOne({ username: req.body.username }).then(user => {
+    if (user) {
+      user.token = ''
+      user.save()
+      return res.status(200).json({
+        success: true,
+        message: 'successfuly logout'
+      })
+    } else {
+      return res.status(200).json({
+        success: false,
+        message: `cannot find user ${req.body.username}`
+      })
+    }
+  })
+}
+
 module.exports.getByUsername = (req, res) => {
   User.find({ username: req.params.username }).then(user => {
     res.status(200).json({
