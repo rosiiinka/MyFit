@@ -16,3 +16,24 @@ nav ul {
 .row iframe {
   width: 100%
 }
+.img-circle {
+  border-radius: 50%;
+  border:15px solid gainsboro;
+  width: 300px;
+  height: 300px;
+  margin:  0px 40px 40px 40px;
+}
+.images{
+  text-align: center;
+}
+.text-us{
+  text-align: center;
+}
+.founders{
+  margin-left: 70px;
+}
+
+
+
+
+
