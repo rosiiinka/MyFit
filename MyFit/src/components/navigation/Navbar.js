@@ -77,7 +77,7 @@ class Navbar extends Component {
                               :
                             <ul className="nav navbar-nav navbar-right">
                                 <li><Link to='/user/login'>Login</Link></li>
-                                <li><Link to='/user/register'>Register</Link></li>
+                                <li><Link to='/user/register'>Sign up</Link></li>
                             </ul>
                         }
                     </div>
