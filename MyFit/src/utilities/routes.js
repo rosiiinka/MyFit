@@ -10,18 +10,22 @@ import PageNotFound from '../components/error/PageNotFound'
 import ProfilePage from '../components/profile/ProfilePage'
 import NotesPage from '../components/notes/NotesPage'
 import ModesPage from '../components/modes/ModesPage'
-
+import ModePage from '../components/modes/ModePage'
+import PrivateRoute from './PrivateRoute'
+import PrivateRouteForLR from './PrivateRouteForLogin'
+ 
 export default () => (
     <Switch>
         <Route exact path='/' component={HomePage} />
         <Route path='/about' component={AboutPage} />
         <Route path='/contacts' component={ContactsPage} />
-        <Route path='/user/register' component={RegisterPage} />
-        <Route path='/user/login' component={LoginPage} />
-        <Route path='/user/logout' component={LogoutPage} />
-        <Route path='/user/profile' component={ProfilePage} />
-        <Route path='/user/notes' component={NotesPage} />
+        <PrivateRouteForLR path='/user/register' component={RegisterPage} />
+        <PrivateRouteForLR path='/user/login' component={LoginPage} />
         <Route path='/modes' component={ModesPage} />
+        <Route path='/modepage/:id' component={ModePage} />
+        <PrivateRoute path='/user/profile' component={ProfilePage} />
+        <PrivateRoute path='/user/logout' component={LogoutPage} />
+        <PrivateRoute path='/user/notes' component={NotesPage} />
         <Route component={PageNotFound} />
     </Switch>
 )

@@ -1,5 +1,4 @@
 import UserActions from '../actions/UserActions'
-import UserStore from '../stores/UserStore'
 
 class Auth {
     static authenticate (token, username) {
@@ -28,7 +27,7 @@ class Auth {
         if(user !== '' && user !== null && user !== undefined) {
             return true
         } else {
-            false
+            return false
         }
     }
 }
