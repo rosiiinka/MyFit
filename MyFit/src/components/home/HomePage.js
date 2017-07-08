@@ -11,7 +11,7 @@ class HomePage extends Component {
                     <div className="mode heading">
                         <h1>Most Recent Modes</h1>
                     </div>
-
+ 
                     <div className="mode">
                         <div className="flex-container">
                             <div className="flex-child">

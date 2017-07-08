@@ -76,7 +76,6 @@ class RegisterForm extends Component {
         if (!user.username || user.username.length < 3) {
             this.setState({
                 error: 'Username should be at least 3 symbols'
-
             })
         } else {
             UserActions.register(user)
@@ -120,7 +119,7 @@ class RegisterForm extends Component {
             this.props.history.push('/')
         } else {
             this.setState({
-                error: data.message.errmsg
+                error: 'This username already exist'
             })
         }
     }

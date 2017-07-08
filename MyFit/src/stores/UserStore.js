@@ -3,9 +3,6 @@ import dispatcher from '../dispatcher'
 import UserData from '../database/UserData'
 
 class UserStore extends EventEmitter {
-    constructor(props) {
-        super(props)
-    }
  
     register (user) {
         UserData
