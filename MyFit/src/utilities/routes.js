@@ -12,15 +12,15 @@ import NotesPage from '../components/notes/NotesPage'
 import ModesPage from '../components/modes/ModesPage'
 import ModePage from '../components/modes/ModePage'
 import PrivateRoute from './PrivateRoute'
-import PrivateRouteForLR from './PrivateRouteForLogin'
+import PrivateRouteForLogin from './PrivateRouteForLogin'
  
 export default () => (
     <Switch>
         <Route exact path='/' component={HomePage} />
         <Route path='/about' component={AboutPage} />
         <Route path='/contacts' component={ContactsPage} />
-        <PrivateRouteForLR path='/user/register' component={RegisterPage} />
-        <PrivateRouteForLR path='/user/login' component={LoginPage} />
+        <PrivateRouteForLogin path='/user/register' component={RegisterPage} />
+        <PrivateRouteForLogin path='/user/login' component={LoginPage} />
         <Route path='/modes' component={ModesPage} />
         <Route path='/modepage/:id' component={ModePage} />
         <PrivateRoute path='/user/profile' component={ProfilePage} />

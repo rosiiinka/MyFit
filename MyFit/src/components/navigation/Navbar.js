@@ -66,7 +66,7 @@ class Navbar extends Component {
                             <li><Link to='/about'>About us</Link></li>
                             <li><Link to='/contacts'>Contacts</Link></li>
                             { this.isItLogedIn() ? <li><Link to='/user/notes'>Notes</Link></li> : false }
-                            { this.isItLogedIn() ? <li><Link to='/modes'>Modes</Link></li> : false }
+                            <li><Link to='/modes'>Modes</Link></li>
                         </ul>
 
                         { this.isItLogedIn() ?
