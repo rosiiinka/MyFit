@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import UserStore from '../../stores/UserStore'
 import Auth from '../../utilities/Auth'
+import LoginForm from "../user/LoginForm";
 
 class Navbar extends Component {
     constructor (props) {
@@ -68,6 +69,8 @@ class Navbar extends Component {
                             { this.isItLogedIn() ? <li><Link to='/user/notes'>Notes</Link></li> : false }
                             <li><Link to='/modes'>Modes</Link></li>
                         </ul>
+
+                        <ul><Link to="/"><img src="images/logo.png" alt="logo" width={150} height={120}/></Link></ul>
 
                         { this.isItLogedIn() ?
                             <ul className="nav navbar-nav navbar-right">
