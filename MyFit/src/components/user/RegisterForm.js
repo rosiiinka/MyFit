@@ -76,7 +76,7 @@ class RegisterForm extends Component {
         return (
             <div>
                 { this.state.error !== '' ? <h1 id="error">{ this.state.error }</h1> : false }
-                <form className='container'>
+                <form>
                     <InputText name='username' placeholder='Username' handleChange={this.handleChange.bind(this)} value={this.state.user.username} />
                     <InputPassword name='password' placeholder='Password' handleChange={this.handleChange.bind(this)} value={this.state.user.password} />
                     <InputPassword name='confirmPassword' placeholder='Confirm Password' handleChange={this.handleChange.bind(this)} value={this.state.user.confirmPassword} />

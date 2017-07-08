@@ -4,7 +4,7 @@ import LoginForm from './LoginForm'
 class LoginPage extends Component {
     render () {
         return (
-            <div className='container'>
+            <div className='login-container'>
                 <h1 className='centered'>Login</h1>
                 <LoginForm {...this.props} />
             </div>

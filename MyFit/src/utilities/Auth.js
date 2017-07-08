@@ -21,6 +21,16 @@ class Auth {
     static deAuthenticateUser() {
         return window.localStorage.clear()
     }
+
+    static areWeHaveUser() {
+        let user = window.localStorage.getItem('currentUser')
+
+        if(user !== '' && user !== null && user !== undefined) {
+            return true
+        } else {
+            false
+        }
+    }
 }
 
 export default Auth

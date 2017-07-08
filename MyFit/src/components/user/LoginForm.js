@@ -65,7 +65,7 @@ class LoginForm extends Component {
 
     render() {
         return (
-            <form className='container'>
+            <form>
                 <InputText name='username' placeholder='Username' handleChange={this.handleChange.bind(this)} value={this.state.user.username} />
                 <InputPassword name='password' placeholder='Password' handleChange={this.handleChange.bind(this)} value={this.state.user.password} />
                 <div>{this.state.error}</div>

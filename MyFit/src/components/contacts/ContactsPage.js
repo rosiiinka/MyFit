@@ -4,9 +4,26 @@ import React, {Component} from 'react';
 export default class ContactsPage extends Component {
     render() {
         return (
-                <div>
+                <div className="contact">
                     <div className="row">
                         <h1>Contact</h1>
+
+                        <div className="flex-container">
+                            <div className="flex-child">
+                                <ul>
+                                    <li>
+                                        Adress: st. "Bla Atanasov"
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className="flex-child">
+                                <ul>
+                                    <li>
+                                       E-mail: info@myfit.com
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
 
                     <div className="row">
