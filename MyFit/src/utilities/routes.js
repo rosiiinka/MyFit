@@ -10,6 +10,8 @@ import PageNotFound from '../components/error/PageNotFound'
 import ProfilePage from '../components/profile/ProfilePage'
 import NotesPage from '../components/notes/NotesPage'
 import ModesPage from '../components/modes/ModesPage'
+import ModePage from '../components/modes/ModePage'
+import Mode from '../components/modes/Mode'
 
 export default () => (
     <Switch>
@@ -22,6 +24,7 @@ export default () => (
         <Route path='/user/profile' component={ProfilePage} />
         <Route path='/user/notes' component={NotesPage} />
         <Route path='/modes' component={ModesPage} />
+        <Route path='/modepage/:id' component={ ModePage } />
         <Route component={PageNotFound} />
     </Switch>
 )

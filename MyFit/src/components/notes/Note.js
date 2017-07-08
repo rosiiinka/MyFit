@@ -16,7 +16,8 @@ export default class Note extends Component {
                             <th>Calories</th>
                         </thead>
                         <tbody>
-                            <td>Пилешко филе</td><td>120/100</td>
+                            <td>Пилешко филе</td>
+                            <td>120/100</td>
                         </tbody>
                     </table>
                     
