@@ -1,11 +1,34 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 
-class ModePage {
+class ModePage extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            modes: [
+                {id: 1, heading: 'Title', content: 'description'},
+                {id: 2, heading: 'Title2', content: 'description2'}
+            ]
+        }
+    }
+
+    findElement(arr, propName, propValue) {
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i][propName] = propValue) {
+                return arr[i];
+            } 
+        }
+    }
+    
+
     render() {
+        let paramId = this.props.match.params
+        let mode = this.findElement(this.state.modes, "id", paramId)
+
         return (
             <div>
                 <article>
-                    <h2>90 days diet</h2>
+                    <h2>{ mode.heading }</h2>
                     <p> Everyday you eat different type of food group. The first food groups that you start with is
                         foods
                         rich in protein, followed by legumes and pulses, carbs and fruits which you rotate till the
@@ -79,10 +102,8 @@ class ModePage {
                         that you should not mix the fruits, don’t you?
                         Eat on the fruit day different fruit group on breakfast, lunch and dinner. For example, you can
                         eat bananas on breakfast, peaches on lunch and appleas on dinner. Simple as that!
-
                     </p>
                 </article>
-
             </div>
         );
     }
