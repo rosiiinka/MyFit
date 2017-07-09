@@ -12,6 +12,7 @@ class CreateSingleNote extends Component{
         }
 
         this.handleChange = this.handleChange.bind(this)
+        this.createNewNote = this.createNewNote.bind(this)
     }
 
     handleChange(event) {
@@ -28,6 +29,13 @@ class CreateSingleNote extends Component{
         })
     }
 
+    createNewNote() {
+        let field = 'notes'
+        let product = this.state.input.product
+
+        console.log(this.state.input.product)
+    }
+
     render() {
         return(     
             <form>
@@ -42,7 +50,7 @@ class CreateSingleNote extends Component{
                 </fieldset>
 
                 <fieldset>
-                    <img className="add-new-one" src="/images/plus.png" alt="plus"/>
+                    <img onClick={ this.createNewNote } className="add-new-one" src="/images/plus.png" alt="plus"/>
                 </fieldset>
             </form>
         )

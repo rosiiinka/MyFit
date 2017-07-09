@@ -21,10 +21,12 @@ class NotesPage extends Component{
     }
 
     render() {
-        let notes = this.state.user.notes.map(note => (
+        let notes = this.state.user.notes.map((note, id) => (
             <div className="single-note">
                 <Note 
-                when={ note.when } 
+                key={ id }
+                when={ note.when }
+                date={ note.date }
                 product={ note.product }
                 calories={ note.calories } />
             </div>
