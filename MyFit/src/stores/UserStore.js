@@ -3,7 +3,6 @@ import dispatcher from '../dispatcher'
 import UserData from '../database/UserData'
 
 class UserStore extends EventEmitter { 
- 
     register (user) {
         UserData
         .register(user) 

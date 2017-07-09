@@ -3,7 +3,6 @@ import dispatcher from '../dispatcher'
 import ProductData from '../database/ProductData'
 
 class ProductStore extends EventEmitter {
- 
     add (product) {
         ProductData
         .add(product) 
