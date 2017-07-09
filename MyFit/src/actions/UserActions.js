@@ -3,7 +3,7 @@ import dispatcher from '../dispatcher'
 const userActions = {
     register: (user) => {
         dispatcher.dispatch({
-            type: 'REGISTER_USER',
+            type: 'REGISTER_USER', 
             user
         })
     },
@@ -11,7 +11,7 @@ const userActions = {
         dispatcher.dispatch({
             type: 'LOGIN_USER',
             user
-        })
+        }) 
     },
     logout: (user) => {
         dispatcher.dispatch({
