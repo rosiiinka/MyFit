@@ -9,7 +9,7 @@ module.exports = {
                 'Content-Type': 'application/json'
             }
         }).then(res => res.json())
-    },
+    },  
     login: (user) => {
         return window.fetch('http://localhost:1337/users/login', {
             method: 'POST',
