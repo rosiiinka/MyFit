@@ -6,11 +6,15 @@ module.exports.add = (req, res) => {
     calories: Number(req.body.calories)
   }
 
-  Product.create(newProduct).then(product => {
+  Product.create(newProduct)
+  .then(product => {
     return res.status(200).json({
       success: true,
-      message: 'Product added',
-      product
+      message: 'Product added', 
+      createdProduct: {
+          name: req.body.name,
+          calories: req.body.calories
+      }
     })
   })
   .catch(err => {
