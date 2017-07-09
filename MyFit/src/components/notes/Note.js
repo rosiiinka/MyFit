@@ -5,8 +5,8 @@ export default class Note extends Component {
         return (
             <div className="note">
                 <div className="heading">
-                    <h1>Day of the week</h1>
-                    <small><i>Date: 12/--/2017</i></small>
+                    <h1>{ this.props.when }</h1>
+                    <small><i>{ this.props.date }</i></small>
                 </div>
                 
                 <div className="content">
@@ -16,7 +16,8 @@ export default class Note extends Component {
                             <th>Calories</th>
                         </thead>
                         <tbody>
-                            <td>Пилешко филе</td><td>120/100</td>
+                            <td>{ this.props.product }</td>
+                            <td>{ this.props.calories }</td>
                         </tbody>
                     </table>
                     

@@ -7,21 +7,33 @@ import CreateNote from './CreateNote'
 class NotesPage extends Component{
     constructor(props) {
         super(props)
+
+        this.state = {
+            user: {
+                username: 'Niki',
+                notes: [
+                    {id: 1, date: '10/07/2016', product: 'Pizza', calories: '240/100', when: 'Monday'},
+                    {id: 2, date: '12/04/2017', product: 'Musle', calories: '200/100', when: 'Firday'},
+                    {id: 2, date: '12/04/2017', product: 'Musle', calories: '200/100', when: 'Firday'}
+                ]
+            }
+        }
     }
 
     render() {
+        let notes = this.state.user.notes.map(note => (
+            <div className="single-note">
+                <Note 
+                when={ note.when } 
+                product={ note.product }
+                calories={ note.calories } />
+            </div>
+        ))
+        
         return(
             <div className="create-note">
                 <div className="list-all">
-                    <div className="single-note">
-                        <Note />
-                    </div>
-                    <div className="single-note">
-                        <Note />
-                    </div>
-                    <div className="single-note">
-                        <Note />
-                    </div>
+                    { notes }
                 </div>
 
                 <CreateNote />
