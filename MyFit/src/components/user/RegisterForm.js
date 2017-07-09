@@ -12,7 +12,7 @@ class RegisterForm extends Component {
         super(props)
         this.state = {
             user: {
-                username: '',
+                username: '', 
                 password: '',
                 confirmPassword: '',
                 firstName: '',

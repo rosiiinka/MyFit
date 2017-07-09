@@ -40,14 +40,6 @@ class Navbar extends Component {
         })
     }
 
-    isItLogedIn() {
-        let { currentUser } = this.state
-
-        if(currentUser !== '' && currentUser !== null && currentUser !== undefined) {
-            return true
-        }
-    }
-
     render () {
         return (
             <nav className="navbar navbar-inverse">
@@ -59,20 +51,18 @@ class Navbar extends Component {
                             <span className="icon-bar"></span>
                             <span className="icon-bar"></span>
                         </button>
-                       <Link className="navbar-brand" to='/'>Home</Link>
+                       <Link className="navbar-brand" to='/'><img src="/images/logo.png" alt="logo" /></Link>
                     </div>
 
                     <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
                         <ul className="nav navbar-nav">
                             <li><Link to='/about'>About us</Link></li>
                             <li><Link to='/contacts'>Contacts</Link></li>
-                            { this.isItLogedIn() ? <li><Link to='/user/notes'>Notes</Link></li> : false }
+                            { Auth.areWeHaveUser() ? <li><Link to='/user/notes'>Notes</Link></li> : false }
                             <li><Link to='/modes'>Modes</Link></li>
                         </ul>
 
-                        <ul><Link to="/"><img src="images/logo.png" alt="logo" width={150} height={120}/></Link></ul>
-
-                        { this.isItLogedIn() ?
+                        { Auth.areWeHaveUser() ?
                             <ul className="nav navbar-nav navbar-right">
                                 <li><Link to="/user/profile">Profile</Link></li>
                                 <li><Link to="/user/logout">LogOut</Link></li>
