@@ -2,11 +2,11 @@ import { EventEmitter } from 'events'
 import dispatcher from '../dispatcher'
 import UserData from '../database/UserData'
 
-class UserStore extends EventEmitter {
+class UserStore extends EventEmitter { 
  
     register (user) {
         UserData
-        .register(user)
+        .register(user) 
         .then(data => this.emit(this.eventTypes.REGISTER_USER, data))
     }
 
@@ -23,7 +23,7 @@ class UserStore extends EventEmitter {
     }
 
     getByUsername (id) {
-        UserData.getById(id).then(user => {
+        UserData.getById(id).then(user =>  {
             return user
         })
     }
