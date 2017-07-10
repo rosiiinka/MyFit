@@ -28,9 +28,9 @@ class UserStore extends EventEmitter {
     }
 
     createNote(note) {
-        UserData.createNote(note).then(note => {
-            return note
-        })
+        UserData
+        .createNote(note)
+        .then(note => this.emit(this.eventTypes.CREATE_NOTE, note))
     }
 
     handleAction (action) {
@@ -67,7 +67,8 @@ userStore.eventTypes = {
     LOGIN_USER: 'user_loggedIn',
     SET_USER: 'user_set',
     LOGOUT_USER: 'user_logout',
-    GET_USER: 'user_get'
+    GET_USER: 'user_get',
+    CREATE_NOTE: 'note_create'
 }
 
 dispatcher.register(userStore.handleAction.bind(userStore))
