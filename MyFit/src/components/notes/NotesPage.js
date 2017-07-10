@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-
+import UserStore from '../../stores/UserStore'
 import Note from './Note'
 import CreateNote from './CreateNote'
 

@@ -27,6 +27,12 @@ class UserStore extends EventEmitter {
         .then(data => this.emit(this.eventTypes.GET_USER, data))
     }
 
+    createNote(note) {
+        UserData.createNote(note).then(note => {
+            return note
+        })
+    }
+
     handleAction (action) {
         switch (action.type) {
             case 'REGISTER_USER': {
@@ -43,6 +49,10 @@ class UserStore extends EventEmitter {
             }
             case 'LOGOUT_USER': {
                 this.logout(action.user)
+                break
+            }
+            case 'CREATE_NOTE': {
+                this.createNote(action.note)
                 break
             }
             default: break

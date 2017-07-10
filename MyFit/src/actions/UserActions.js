@@ -24,6 +24,12 @@ const userActions = {
             type: 'GET_BY_USERNAME',
             username
         })
+    },
+    createNote: (note) => {
+        dispatcher.dispatch({
+            type: 'CREATE_NOTE',
+            note
+        })
     }
 }
 

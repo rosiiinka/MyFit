@@ -9,14 +9,11 @@ class ProfilePage extends Component{
 
         this.state = {
             user: {
-                username: 'Niki',
-                email: 'nvr@myfit.com',
-                age: '19',
+                username: window.localStorage.getItem('currentUser'),
+                email: '',
+                age: '',
                 notes: [
-                    {id: 1, date: '10/07/2016', product: 'Pizza', calories: '240/100', when: 'Monday'},
-                    {id: 2, date: '12/04/2017', product: 'Musle', calories: '200/100', when: 'Firday'},
-                    {id: 2, date: '12/04/2017', product: 'Musle', calories: '200/100', when: 'Firday'},
-                    {id: 1, date: '10/07/2016', product: 'Pizza', calories: '240/100', when: 'Monday'}
+                    
                 ]
             }
         }
@@ -35,12 +32,11 @@ class ProfilePage extends Component{
             <div className="profile-page">
                 <div className="about-user">
                     <div className="flex-child">
-                        <h1> { this.state.user.username } </h1>
-                        <p>Age: { this.state.user.age }</p>
-                    </div>
-                    <div className="flex-child">
                         <ul>
-                            <li>{ this.state.user.email }</li>
+                            <li><img src="https://cdn.dribbble.com/users/124355/screenshots/2199042/profile_1x.png" alt="profile"/></li>
+                            <li><h1>Username: { this.state.user.username } </h1></li>
+                            <li><p>Age: { this.state.user.age }</p></li>
+                            <li>E-mail: { this.state.user.email }</li>
                         </ul>
                     </div>
                 </div>

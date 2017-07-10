@@ -31,6 +31,20 @@ module.exports = {
                 'Content-Type': 'application/json'
             }
         }).then(res => res.json())
+<<<<<<< .mine
+    },
+    createNote: (user) => {
+        return window.fetch('http://localhost:1337/user/createnote', {
+            method: 'POST',
+            body: JSON.stringify(user),
+            mode: 'cors',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json())
+||||||| .r55
+=======
     },
     getByUsername: (username) => {
         let user = {
@@ -45,5 +59,6 @@ module.exports = {
                 'Content-Type': 'application/json'
             }
         }).then(res => res.json())
+>>>>>>> .r56
     }
 }

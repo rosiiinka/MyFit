@@ -1,18 +1,22 @@
 import React, {Component} from 'react'
 
+import UserActions from '../../actions/UserActions'
+import toastr from 'toastr'
+
 class CreateSingleNote extends Component{
     constructor(props) {
         super(props)
 
         this.state = {
-            input: {
+            note: {
                 product: '',
                 quantity: ''
-            }
+            },
+            error: ''
         }
 
         this.handleChange = this.handleChange.bind(this)
-        this.createNewNote = this.createNewNote.bind(this)
+        this.createNote = this.createNote.bind(this)
     }
 
     handleChange(event) {
@@ -21,36 +25,43 @@ class CreateSingleNote extends Component{
         let field = target.name
         let value = target.value
         
-        let input = this.state.input
+        let note = this.state.note
 
-        input[field] = value
+        note[field] = value
         this.setState({ 
-            input: input
+            note: note
         })
     }
 
-    createNewNote() {
-        let field = 'notes'
-        let product = this.state.input.product
+    createNote() {
+        let product = this.state.note.product;
+        let quantity = this.state.note.quantity;
 
-        console.log(this.state.input.product)
+        if(product === '' || quantity === '') {
+            toastr.error("All fields required!")
+            return
+        }
+
+        UserActions.createNote(this.state.note)
     }
 
     render() {
         return(     
             <form>
+              
+                
                 <fieldset>
                     <label htmlFor="product">Product</label>
-                    <input type="text" name="product" value={this.state.input.product} onChange={this.handleChange} />
+                    <input type="text" name="product" value={this.state.note.product} onChange={this.handleChange} />
                 </fieldset>
 
                 <fieldset>
                     <label htmlFor="product">Quantity</label>
-                    <input type="text" name="quantity" value={this.state.input.quantity} onChange={this.handleChange} />
+                    <input type="text" name="quantity" value={this.state.note.quantity} onChange={this.handleChange} />
                 </fieldset>
 
                 <fieldset>
-                    <img onClick={ this.createNewNote } className="add-new-one" src="/images/plus.png" alt="plus"/>
+                    <img onClick={ this.createNote } className="add-new-one" src="http://lp.techagentacademy.com/wp-content/uploads/2015/02/circle-icon-21.png" alt="plus"/>
                 </fieldset>
             </form>
         )
