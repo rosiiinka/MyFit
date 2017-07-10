@@ -1,6 +1,13 @@
 import React, {Component} from 'react'
+import Auth from '../../utilities/Auth'
+import UserStore from '../../stores/UserStore'
 
 class AboutPage extends Component {
+    componentDidMount() {
+        let test = Auth.isInRole('User')
+        debugger
+    }
+
     render() {
         return (
             <div className="about-us">

@@ -19,10 +19,10 @@ const userActions = {
             user
         })
     },
-    getById: (id) => {
+    getByUsername: (username) => {
         dispatcher.dispatch({
-            type: 'GET_BY_ID',
-            id
+            type: 'GET_BY_USERNAME',
+            username
         })
     }
 }

@@ -84,7 +84,7 @@ module.exports.logout = (req, res) => {
 }
 
 module.exports.getByUsername = (req, res) => {
-  User.find({ username: req.params.username }).then(user => {
+  User.findOne({ username: req.body.username }).then(user => {
     res.status(200).json({
       success: true,
       message: 'found',
