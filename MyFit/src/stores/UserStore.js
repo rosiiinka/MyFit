@@ -32,6 +32,11 @@ class UserStore extends EventEmitter {
         .createNote(note)
         .then(note => this.emit(this.eventTypes.CREATE_NOTE, note))
     }
+    createMode(mode) {
+        UserData
+            .createMode(mode)
+            .then(mode => this.emit(this.eventTypes.CREATE_MODE, mode))
+    }
 
     handleAction (action) {
         switch (action.type) {
@@ -55,6 +60,10 @@ class UserStore extends EventEmitter {
                 this.createNote(action.note)
                 break
             }
+            case 'CREATE_MODE': {
+                this.createMode(action.mode)
+                break
+            }
             default: break
         }
     }
@@ -68,7 +77,8 @@ userStore.eventTypes = {
     SET_USER: 'user_set',
     LOGOUT_USER: 'user_logout',
     GET_USER: 'user_get',
-    CREATE_NOTE: 'note_create'
+    CREATE_NOTE: 'note_create',
+    CREATE_MODE: 'mode_create'
 }
 
 dispatcher.register(userStore.handleAction.bind(userStore))
