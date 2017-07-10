@@ -77,37 +77,40 @@ class RegisterForm extends Component {
             this.setState({
                 error: 'Username should be at least 3 symbols'
             })
+            formIsValid = false
         } else {
             UserActions.register(user)
-            formIsValid = false
+
         }
 
         if (!user.password || user.password.length < 4) {
             this.setState({
                 error: 'Password should be at least 4 symbols'
-
             })
+            formIsValid = false
         } else {
             UserActions.register(user)
-            formIsValid = false
+
         }
 
         if (!user.firstName || user.firstName.length < 3) {
             this.setState({
                 error: 'First Name should be at least 3 symbols'
             })
+            formIsValid = false
         } else {
             UserActions.register(user)
-            formIsValid = false
+
         }
 
         if (!user.lastName || user.lastName.length < 3) {
             this.setState({
                 error: 'Last Name should be at least 3 symbols'
             })
+            formIsValid = false
         } else {
             UserActions.register(user)
-            formIsValid = false
+
         }
         return formIsValid
     }
