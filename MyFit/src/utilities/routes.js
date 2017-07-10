@@ -11,6 +11,7 @@ import ProfilePage from '../components/profile/ProfilePage'
 import NotesPage from '../components/notes/NotesPage'
 import ModesPage from '../components/modes/ModesPage'
 import ModePage from '../components/modes/ModePage'
+import CreateModePage from '../components/modes/CreateModePage'
 import PrivateRoute from './PrivateRoute'
 import PrivateRouteForLogin from './PrivateRouteForLogin'
  
@@ -22,10 +23,11 @@ export default () => (
         <PrivateRouteForLogin path='/user/register' component={RegisterPage} />
         <PrivateRouteForLogin path='/user/login' component={LoginPage} />
         <Route path='/modes' component={ModesPage} />
-        <Route path='/modepage/:id' component={ModePage} />
+        <Route path='/mode/:id' component={ModePage} />
         <PrivateRoute path='/user/profile' component={ProfilePage} />
         <PrivateRoute path='/user/logout' component={LogoutPage} />
         <PrivateRoute path='/user/notes' component={NotesPage} />
+        <PrivateRoute path='/mode/create' component={CreateModePage} />
         <Route component={PageNotFound} />
     </Switch>
 )

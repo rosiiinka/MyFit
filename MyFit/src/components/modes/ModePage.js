@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import UserStore from '../../stores/UserStore'
 
 class ModePage extends Component {
     constructor(props) {
@@ -30,6 +31,8 @@ class ModePage extends Component {
                     <h2>{ mode.title }</h2>
                     <p>{ mode.content }</p>
                 </article>
+
+
             </div> 
         );
     }
