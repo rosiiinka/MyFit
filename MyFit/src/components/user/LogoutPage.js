@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Auth from '../../utilities/Auth'
 import UserStore from '../../stores/UserStore'
-import UserActions from '../../actions/UserActions'
 
 export default class LogoutPage extends Component {
     constructor(props) {
@@ -15,8 +14,11 @@ export default class LogoutPage extends Component {
         let user = {
             username: username
         }
-        this.props.history.push('/')
-        UserActions.logout(user)
+        
+        UserStore.logout(user).then(user => {
+            Auth.deAuthenticateUser()
+            this.props.history.push('/')
+        })
     }
 
     render() {

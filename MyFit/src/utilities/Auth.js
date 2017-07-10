@@ -25,25 +25,25 @@ class Auth {
     }
 
     static areWeHaveUser() {
-        let user = window.localStorage.getItem('currentUser')
-
-        if (user !== '' && user !== null && user !== undefined) {
-            return true
-        } else {
-            return false
-        }
+        let username = window.localStorage.getItem('currentUser')
+        let token = window.localStorage.getItem('token')
+        return UserStore.getByUsername(username).then(data => {
+            if (data.user) {
+                let user = data.user
+                if (user.token === token) {
+                    return true
+                } else {
+                    return false
+                }
+            }
+        })
     }
 
     static isInRole(role) {
         let username = window.localStorage.getItem('currentUser')
 
-        UserData.getByUsername(username).then(data => {
-            debugger
-            if (data.success) {
-                return data.user
-            } else {
-                return data.message
-            }
+        return UserStore.getByUsername(username).then(data => {
+            return data.user.roles.indexOf(role) !== -1
         })
     }
 }

@@ -7,12 +7,6 @@ const userActions = {
             user
         })
     },
-    login: (user) => {
-        dispatcher.dispatch({
-            type: 'LOGIN_USER',
-            user
-        }) 
-    },
     logout: (user) => {
         dispatcher.dispatch({
             type: 'LOGOUT_USER',

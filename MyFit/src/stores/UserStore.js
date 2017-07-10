@@ -1,6 +1,7 @@
 import { EventEmitter } from 'events'
 import dispatcher from '../dispatcher'
 import UserData from '../database/UserData'
+import Auth from '../utilities/Auth'
 
 class UserStore extends EventEmitter { 
     register (user) {
@@ -10,21 +11,21 @@ class UserStore extends EventEmitter {
     }
 
     login (user) {
-        UserData
+        return UserData
         .login(user)
-        .then(data => this.emit(this.eventTypes.LOGIN_USER, data))
+        .then(data => { return data })
     }
 
     logout (user) {
-        UserData
+        return UserData
         .logout(user)
-        .then(data => this.emit(this.eventTypes.LOGOUT_USER, data))
+        .then(data => { return data })
     }
 
     getByUsername (username) {
-        UserData
+        return UserData
         .getByUsername(username)
-        .then(data => this.emit(this.eventTypes.GET_USER, data))
+        .then(data => { return data })
     }
 
     createNote(note) {
@@ -41,10 +42,6 @@ class UserStore extends EventEmitter {
             }
             case 'GET_BY_USERNAME': {
                 this.getByUsername(action.username)
-                break
-            }
-            case 'LOGIN_USER': {
-                this.login(action.user)
                 break
             }
             case 'LOGOUT_USER': {
@@ -64,7 +61,6 @@ let userStore = new UserStore()
 
 userStore.eventTypes = {
     REGISTER_USER: 'user_registered',
-    LOGIN_USER: 'user_loggedIn',
     SET_USER: 'user_set',
     LOGOUT_USER: 'user_logout',
     GET_USER: 'user_get',

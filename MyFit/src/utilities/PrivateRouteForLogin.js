@@ -3,17 +3,17 @@ import { Route, Redirect } from 'react-router-dom'
 
 import Auth from './Auth'
 
-const PrivateRouteForLogin = ({component: Component, ...rest}) => (
+const PrivateRouteForLogin = ({ component: Component, ...rest }) => (
     <Route {...rest} render={props => (
-            Auth.areWeHaveUser() ? (    
-                <Redirect to={{
-                    pathname: '/',
-                    state: { from: props.location }
-                }} />
-            ) : (
+        Auth.areWeHaveUser() ? (
+            <Redirect to={{
+                pathname: '/',
+                state: { from: props.location }
+            }} />
+        ) : (
                 <Component {...props} />
             )
-        )
+    )
     } />
 )
 

@@ -5,38 +5,19 @@ import Auth from '../../utilities/Auth'
 import LoginForm from "../user/LoginForm";
 
 class Navbar extends Component {
-    constructor (props) {
+    constructor(props) {
         super(props)
 
         this.state = {
-            currentUser: window.localStorage.getItem('currentUser'),
             loggedIn: false
         }
-
-        this.getCurrentUser = this.getCurrentUser.bind(this)
-        this.logOut = this.logOut.bind(this)
-
-        UserStore.on(
-            UserStore.eventTypes.SET_USER,
-            this.getCurrentUser
-        )
-
-        UserStore.on(
-            UserStore.eventTypes.LOGOUT_USER,
-            this.logOut
-        )
     }
 
-    getCurrentUser () {
-        this.setState({
-            currentUser: window.localStorage.getItem('currentUser')
-        })
-    }
-
-    logOut() {
-        Auth.deAuthenticateUser()
-        this.setState({
-            currentUser: ''
+    componentDidMount() {
+        Auth.areWeHaveUser().then(result => {
+            this.setState({
+                loggedIn: result
+            })
         })
     }
 
@@ -58,7 +39,9 @@ class Navbar extends Component {
                         <ul className="nav navbar-nav">
                             <li><Link to='/about'>About us</Link></li>
                             <li><Link to='/contacts'>Contacts</Link></li>
-                            { Auth.areWeHaveUser() ? <li><Link to='/user/notes'>Notes</Link></li> : false }
+                            {
+                                this.state.loggedIn ? <li><Link to='/user/notes'>Notes</Link></li> : false  
+                            }
                             <li><Link to='/modes'>Modes</Link></li>
                         </ul>
 

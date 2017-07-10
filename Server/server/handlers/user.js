@@ -6,7 +6,8 @@ module.exports.login = (req, res) => {
     if (user) {
       let hashedPassword = encryption.generateHashedPassword(user.salt, req.body.password)
       if (user.hashedPassword === hashedPassword) {
-        let token = encryption.generateHashedPassword(req.body.username, req.body.password)
+        let randomNum = encryption.gelerateSalt()
+        let token = encryption.generateHashedPassword(req.body.username, randomNum)
 
         user.token = token
         user.save()

@@ -3,9 +3,21 @@ import Auth from '../../utilities/Auth'
 import UserStore from '../../stores/UserStore'
 
 class AboutPage extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            isInRole: false
+        }
+    }
+
     componentDidMount() {
-        let test = Auth.isInRole('User')
-        debugger
+        Auth.isInRole('User').then(isInRole => {
+            this.setState({
+                isInRole: isInRole
+            })
+            debugger
+        })
     }
 
     render() {

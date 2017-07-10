@@ -15,20 +15,6 @@ class LoginForm extends Component {
             },
             error: ''
         }
-
-        this.handleUserLogin = this.handleUserLogin.bind(this)
-
-        UserStore.on(
-            UserStore.eventTypes.LOGIN_USER,
-            this.handleUserLogin
-        )
-    }
-
-    componentWillUnmount() {
-        UserStore.removeListener(
-            UserStore.eventTypes.LOGIN_USER,
-            this.handleUserLogin
-        )
     }
 
     handleChange(event) {
@@ -36,11 +22,11 @@ class LoginForm extends Component {
         let target = event.target
         let field = target.name
         let value = target.value
-        
+
         let user = this.state.user
 
         user[field] = value
-        this.setState({ 
+        this.setState({
             user: user
         })
     }
@@ -48,19 +34,10 @@ class LoginForm extends Component {
     loginUser(event) {
         event.preventDefault()
         let user = this.state.user
-        UserActions.login(user)
-    }
-
-    handleUserLogin(data) {
-        if (data.success) {
+        UserStore.login(user).then(data => {
             Auth.authenticate(data.user.token, data.user.username)
-            UserStore.emit(UserStore.eventTypes.SET_USER)
             this.props.history.push('/')
-        } else {
-            this.setState({
-                error: data.message
-            })
-        }
+        })        
     }
 
     render() {
