@@ -42,7 +42,7 @@ class CreateMode extends Component {
 
         toastr.success("You've successfully created a mode!")
 
-        UserActions.createMode(this.state.mode)
+        UserActions.createNote(this.state.mode)
     }
     validateMode(){
         let mode = this.state.mode

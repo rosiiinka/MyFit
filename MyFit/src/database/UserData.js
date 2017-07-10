@@ -57,5 +57,16 @@ module.exports = {
                 'Content-Type': 'application/json'
             }
         }).then(res => res.json())
+    },
+    createMode: (mode) => {
+        return window.fetch('http://localhost:1337/users/createmode', {
+            method: 'POST',
+            body: JSON.stringify(mode),
+            mode: 'cors',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json())
     }
 }

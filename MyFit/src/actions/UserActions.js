@@ -30,6 +30,12 @@ const userActions = {
             type: 'CREATE_NOTE',
             note
         })
+    },
+    createMode: (mode) => {
+        dispatcher.dispatch({
+            type: 'CREATE_MODE',
+            mode
+        })
     }
 }
 
