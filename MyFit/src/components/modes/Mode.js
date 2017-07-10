@@ -7,7 +7,7 @@ class Mode extends Component {
             <article>
                 <h2>{ this.props.heading }</h2>
                 <p>{ this.props.content }</p>
-                <Link to={ '/modepage/' + this.props.id} className="btn btn-blue">Read more</Link>
+                <Link to={ '/mode/' + this.props.id} className="btn btn-blue">Read more</Link>
             </article>
         )
     }
