@@ -18,6 +18,23 @@ class NotesPage extends Component{
                 ]
             }
         }
+
+        this.listAllNotes = this.listAllNotes.bind(this)
+
+        UserStore.on(
+            UserStore.eventTypes.CREATE_NOTE, 
+            this.listAllNotes
+        )
+    }
+
+    listAllNotes(data) {
+        let notes = this.state.user.notes
+        let user = this.state.user 
+
+        user[notes]
+        this.setState({
+            user: data.notes
+        })
     }
 
     render() {
