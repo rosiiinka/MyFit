@@ -7,10 +7,6 @@ class CreateNote extends Component{
         return(
             <div className="create-new">
                 <CreateSingleNote />
-                
-                <div className="button">
-                    <input className="btn btn-blue x100" type="submit" value="submit"/>
-                </div>
             </div>
         )
 

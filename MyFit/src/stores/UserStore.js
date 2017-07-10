@@ -21,9 +21,15 @@ class UserStore extends EventEmitter {
         .then(data => this.emit(this.eventTypes.LOGOUT_USER, data))
     }
 
-    getByUsername (id) {
-        UserData.getById(id).then(user =>  {
-            return user
+    getByUsername (username) {
+        UserData
+        .getByUsername(username)
+        .then(data => this.emit(this.eventTypes.GET_USER, data))
+    }
+
+    createNote(note) {
+        UserData.createNote(note).then(note => {
+            return note
         })
     }
 
@@ -34,7 +40,7 @@ class UserStore extends EventEmitter {
                 break
             }
             case 'GET_BY_USERNAME': {
-                this.getByUsername(action.id)
+                this.getByUsername(action.username)
                 break
             }
             case 'LOGIN_USER': {
@@ -43,6 +49,10 @@ class UserStore extends EventEmitter {
             }
             case 'LOGOUT_USER': {
                 this.logout(action.user)
+                break
+            }
+            case 'CREATE_NOTE': {
+                this.createNote(action.note)
                 break
             }
             default: break
@@ -56,7 +66,8 @@ userStore.eventTypes = {
     REGISTER_USER: 'user_registered',
     LOGIN_USER: 'user_loggedIn',
     SET_USER: 'user_set',
-    LOGOUT_USER: 'user_logout'
+    LOGOUT_USER: 'user_logout',
+    GET_USER: 'user_get'
 }
 
 dispatcher.register(userStore.handleAction.bind(userStore))

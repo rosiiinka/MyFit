@@ -15,6 +15,7 @@ export default class LogoutPage extends Component {
         let user = {
             username: username
         }
+        this.props.history.push('/')
         UserActions.logout(user)
     }
 

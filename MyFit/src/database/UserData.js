@@ -31,5 +31,20 @@ module.exports = {
                 'Content-Type': 'application/json'
             }
         }).then(res => res.json())
+
+    },
+    getByUsername: (username) => {
+        let user = {
+            username
+        }
+        return window.fetch('http://localhost:1337/users/get', {
+            method: 'POST',
+            body: JSON.stringify(user),
+            mode: 'cors',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json())
     }
 }

@@ -19,10 +19,16 @@ const userActions = {
             user
         })
     },
-    getById: (id) => {
+    getByUsername: (username) => {
         dispatcher.dispatch({
-            type: 'GET_BY_ID',
-            id
+            type: 'GET_BY_USERNAME',
+            username
+        })
+    },
+    createNote: (note) => {
+        dispatcher.dispatch({
+            type: 'CREATE_NOTE',
+            note
         })
     }
 }
