@@ -13,4 +13,7 @@ module.exports = (app) => {
 
   app.post('/notes/add', handlers.note.add)
   app.get('/notes/all', handlers.note.all)
+
+  app.post('/mode/create', handlers.mode.add)
+  app.get('/mode/all', handlers.mode.all)
 }

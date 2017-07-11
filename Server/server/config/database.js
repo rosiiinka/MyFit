@@ -4,6 +4,7 @@ mongoose.Promise = global.Promise
 require('../models/user')
 require('../models/note')
 require('../models/product')
+require('../models/mode')
 
 module.exports = (settings) => {
   mongoose.connect(settings.connectionString).then().catch(err => console.log(err))
