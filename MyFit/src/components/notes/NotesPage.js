@@ -37,7 +37,8 @@ class NotesPage extends Component {
                 <div className="single-note">
                     <Note
                         key={id}
-                        date={note.date}
+                        date={note.originalDate}
+                        quantity={note.quantity}
                         products={note.products}
                         calories={'note.calories'} />
                 </div>

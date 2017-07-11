@@ -58,7 +58,6 @@ class CreateSingleNote extends Component{
     handleCreatingNote(data) {
         if(data.success) {
             toastr.success(data.message)
-            NoteStore.emit(NoteStore.eventTypes.ADD_NOTE)
         } else {
             toastr.error(data.message)
         }
