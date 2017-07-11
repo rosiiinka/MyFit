@@ -1,12 +1,12 @@
 import React, {Component} from 'react'
-import CreateMode from './CreateModeForm'
+import CreateModeForm from './CreateModeForm'
 
-class CreateModePage extends Component{
+class CreateModePage extends Component {
     render() {
         return(
-            <div>
+            <div className="create-mode">
                 <h1>Create Mode</h1>
-                <CreateMode {...this.props}/>
+                 <CreateModeForm { ...this.props } />
             </div>
         )
     }

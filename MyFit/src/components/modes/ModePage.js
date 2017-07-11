@@ -31,8 +31,6 @@ class ModePage extends Component {
                     <h2>{ mode.title }</h2>
                     <p>{ mode.content }</p>
                 </article>
-
-
             </div> 
         );
     }
