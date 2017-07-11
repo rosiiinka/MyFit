@@ -12,7 +12,7 @@ class ModesPage extends Component {
                 content="Our 1,350-calorie-a-day diet features foods.." 
                 id="2" />
                <div>
-                   <Link to='/mod/create' className="btn btn-blue">Create Mode</Link>
+                   <Link to='/modisimo/create' className="btn btn-blue">Create Mode</Link>
                </div>
             </div>
         );

@@ -26,7 +26,7 @@ export default () => (
         <PrivateRouteForLogin path='/user/login' component={LoginPage}/>
         <PrivateRoute path='/user/notes' component={NotesPage}/>
         <PrivateRoute path='/modes' component={ModesPage}/>
-        <PrivateRoute path='/mod/create' component={CreateModePage}/>
+        <PrivateRoute path='/modisimo/create' component={CreateModePage}/>
         <PrivateRoute path='/mode/:id' component={ModePage}/>
         <PrivateRouteForAdmin path='/product/add' component={ProductPage}/>
         <PrivateRoute path='/user/profile' component={ProfilePage}/>
