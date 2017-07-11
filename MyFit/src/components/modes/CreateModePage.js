@@ -6,7 +6,7 @@ class CreateModePage extends Component {
         return(
             <div>
                 <h1>Create Mode</h1>
-                // <CreateModeForm { ...this.props } />
+                 <CreateModeForm { ...this.props } />
             </div>
         )
     }
