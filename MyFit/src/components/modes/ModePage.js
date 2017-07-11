@@ -46,7 +46,6 @@ class ModePage extends Component {
         return (
             <div className="single-mode">
                 <article>
-                    <h2>{ mode }</h2>
                     <p></p>
                 </article>
             </div> 
