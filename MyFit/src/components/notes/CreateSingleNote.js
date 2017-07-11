@@ -44,7 +44,7 @@ class CreateSingleNote extends Component{
         let value = target.value
         
         let note = this.state.note
-
+        
         note[field] = value
         this.setState({ 
             note: note
