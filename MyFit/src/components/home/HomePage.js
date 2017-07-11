@@ -32,7 +32,7 @@ class HomePage extends Component {
                         </p>
 
                         <div className="button">
-                            <Link to="/mode">Read More >></Link>
+                            <Link to="/modes">Read More >></Link>
                         </div>
                     </div>
 
@@ -56,7 +56,7 @@ class HomePage extends Component {
                         </p>
 
                         <div className="button">
-                            <Link to="/mode">Read More >></Link>
+                            <Link to="/modes">Read More >></Link>
                         </div>
                     </div>
                 </div>
