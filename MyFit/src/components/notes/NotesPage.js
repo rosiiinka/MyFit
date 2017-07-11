@@ -13,17 +13,21 @@ class NotesPage extends Component {
             notes: []
         }
 
-        this.listAllNotes = this.listAllNotes.bind(this)
-        this.listAllNotes()
+        this.getAllNotes = this.getAllNotes.bind(this)
 
         NoteStore.on(
             NoteStore.eventTypes.ADD_NOTE,
-            this.listAllNotes
+            this.getAllNotes
         )
     }
 
-    listAllNotes() {
-        NoteStore.getAll().then(data => {
+    componentDidMount() {
+        this.getAllNotes()
+    }
+
+    getAllNotes() {
+        let id = window.localStorage.getItem('userId')
+        NoteStore.getAllByUserId(id).then(data => {
             this.setState({
                 notes: data.notes
             })
@@ -34,13 +38,11 @@ class NotesPage extends Component {
         let notes = []
         if (this.state.notes.length !== 0) {
             notes = this.state.notes.map((note, id) => (
-                <div className="single-note">
+                <div key={note._id} className="single-note">
                     <Note
-                        key={id}
                         date={note.originalDate}
                         quantity={note.quantity}
-                        products={note.products}
-                        calories={'note.calories'} />
+                        products={note.products} />
                 </div>
             ))
         }

@@ -47,6 +47,14 @@ class RegisterForm extends Component {
 
     addProduct(event) {
         event.preventDefault()
+        if (!this.state.product.name) {
+            toastr.error('name cannot be empty')
+            return
+        }
+        if (!this.state.product.calories) {
+            toastr.error('calories cannot be empty')
+            return
+        }
         ProductStore.add(this.state.product)
     }
 

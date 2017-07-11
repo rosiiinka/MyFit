@@ -18,7 +18,8 @@ module.exports.login = (req, res) => {
           user: {
             username: user.username,
             token: token,
-            roles: user.roles
+            roles: user.roles,
+            id: user._id
           }
         })
       } else {

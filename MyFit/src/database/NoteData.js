@@ -10,9 +10,13 @@ module.exports = {
             }
         }).then(res => res.json())
     },
-    getAll: () => {
+    getAllByUserId: (id) => {
+        let user = {
+            id
+        }
         return window.fetch('http://localhost:1337/notes/all', {
-            method: 'GET',
+            method: 'POST',
+            body: JSON.stringify(user),
             mode: 'cors',
             headers: {
                 'Accept': 'application/json',

@@ -13,7 +13,8 @@ class CreateSingleNote extends Component{
             note: {
                 product: '',
                 quantity: '',
-                date: new Date()
+                date: new Date(),
+                username: ''
             },
             products: [],
             error: ''
@@ -52,6 +53,20 @@ class CreateSingleNote extends Component{
     }
 
     createNote() {
+        let username = window.localStorage.getItem('currentUser')
+        let note = this.state.note
+        note.username = username
+        this.setState({
+            note
+        })
+        if (!note.product) {
+            toastr.error('product shouldnt be empty')
+            return
+        }
+        if (!note.quantity) {
+            toastr.error('quantity shouldnt be empty')
+            return
+        }
         NoteActions.add(this.state.note)
     }
 
@@ -63,8 +78,12 @@ class CreateSingleNote extends Component{
         }
     }
 
+    test(event) {
+        debugger
+    }
+
     render() {
-        let options = this.state.products.map(product => (
+        let options = this.state.products.map((product, id) => (
             <option key={product._id} value={product._id}>
                 {product.name}
             </option>

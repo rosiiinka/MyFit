@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import UserStore from '../../stores/UserStore'
 import UserActions from '../../actions/UserActions'
 import Note from '../notes/Note'
+import NoteStore from '../../stores/NoteStore'
 
 class ProfilePage extends Component{
     constructor(props) {
@@ -9,24 +10,33 @@ class ProfilePage extends Component{
 
         this.state = {
             user: {
-                username: window.localStorage.getItem('currentUser'),
-                email: '',
-                age: '',
-                notes: [
-                    
-                ]
-            }
+                username: window.localStorage.getItem('currentUser')
+            },
+            notes: []
         }
     }
 
+    componentWillMount() {
+        let id = window.localStorage.getItem('userId')
+        NoteStore.getAllByUserId(id).then(data => {
+            this.setState({
+                notes: data.notes
+            })
+        })
+    }
+
     render() {
-        let notes = this.state.user.notes.map(note => (
-            <Note 
-            when={ note.when } 
-            date={ note.date }
-            product={ note.product }
-            calories={ note.calories } />
-        ))
+        let notes = []
+        if (this.state.notes.length !== 0) {
+            notes = this.state.notes.map((note, id) => (
+                <div key={note._id} className="single-note">
+                    <Note
+                        date={note.originalDate}
+                        quantity={note.quantity}
+                        products={note.products} />
+                </div>
+            ))
+        }
 
         return(
             <div className="profile-page">
@@ -35,8 +45,6 @@ class ProfilePage extends Component{
                         <ul>
                             <li><img src="https://cdn.dribbble.com/users/124355/screenshots/2199042/profile_1x.png" alt="profile"/></li>
                             <li><h1>Username: { this.state.user.username } </h1></li>
-                            <li><p>Age: { this.state.user.age }</p></li>
-                            <li>E-mail: { this.state.user.email }</li>
                         </ul>
                     </div>
                 </div>

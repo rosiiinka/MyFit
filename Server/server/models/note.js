@@ -8,7 +8,8 @@ let noteSchema = mongoose.Schema({
   date: { type: Number, required: ERROR_VALIDATION_MESSAGE },
   month: { type: Number, required: ERROR_VALIDATION_MESSAGE },
   year: { type: Number, required: ERROR_VALIDATION_MESSAGE },
-  products: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product' }]
+  products: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product' }],
+  owner: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 })
 
 let Note = mongoose.model('Note', noteSchema)
