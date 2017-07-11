@@ -11,8 +11,8 @@ class ModesPage extends Component {
                 <Mode heading="1,350-calorie-a-day diet" 
                 content="Our 1,350-calorie-a-day diet features foods.." 
                 id="2" />
-               <div>
-                   <Link to='/modisimo/create' className="btn btn-blue">Create Mode</Link>
+               <div className="btn-create">
+                   <Link to='/modisimo/create' className="btn btn-green">Create Mode</Link>
                </div>
             </div>
         );

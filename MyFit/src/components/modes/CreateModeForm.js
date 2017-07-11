@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import toastr from 'toastr'
 import InputText from '../common/InputText'
-import UserActions from '../../actions/UserActions'
+import ModeActions from '../../actions/ModeActions'
+import ModeStore from '../../stores/ModeStore'
 
 
 class CreateMode extends Component {
@@ -35,14 +36,14 @@ class CreateMode extends Component {
 
     createMode(event){
         event.preventDefault()
-
+        
         if (!this.validateMode()){
             return
         }
 
         toastr.success("You've successfully created a mode!")
 
-        UserActions.createMode(this.state.mode)
+        ModeActions.createMode(this.state.mode)
     }
     
     validateMode(){
