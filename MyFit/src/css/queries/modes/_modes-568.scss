@@ -1,9 +1,13 @@
-.modes-container {
+.modes-container, .modes-container-home {
 	@include maxWidth(1000px);
 	@include flex-container(row nowrap, space-between, flex-start);
 	background: #fff;
 	padding: 30px;
 	position: relative;
+}
+
+.modes-container-home {
+	@include flex-container(column, flex-start, flex-start);
 }
 
 .single-mode {

@@ -7,7 +7,7 @@ class HomePage extends Component {
     render () {
         return (
             <div className="homepage">
-                <div className="modes-container">
+                <div className="modes-container-home">
                     <div className="mode heading">
                         <h1>Most Recent Modes</h1>
                     </div>
