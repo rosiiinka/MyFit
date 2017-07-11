@@ -9,9 +9,9 @@ class NoteStore extends EventEmitter {
         .then(data => this.emit(this.eventTypes.ADD_NOTE, data))
     }
 
-    getAll() {
+    getAllByUserId(id) {
         return NoteData
-        .getAll()
+        .getAllByUserId(id)
         .then(data => {return data})
     }
 

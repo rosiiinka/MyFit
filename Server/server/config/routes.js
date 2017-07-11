@@ -12,5 +12,5 @@ module.exports = (app) => {
   app.get('/products/all', handlers.product.all)
 
   app.post('/notes/add', handlers.note.add)
-  app.get('/notes/all', handlers.note.all)
+  app.post('/notes/all', handlers.note.allByUser)
 }

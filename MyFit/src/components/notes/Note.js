@@ -5,18 +5,48 @@ export default class Note extends Component {
         super(props)
 
         this.setDay = this.setDay.bind(this)
+        this.mergeProducts = this.mergeProducts.bind(this)
         this.state = {
             day: '',
-            dateInFormat: ''
+            dateInFormat: '',
+            combined: []
         }
     }
     
-    componentDidMount() {
+    mergeProducts(products, quantity) {
+        let combined = []
+        for (let product in products) {
+            let currentProduct = products[product]
+            let currentQuantity = quantity[product]
+            combined.push({
+                name: currentProduct.name,
+                calories: currentProduct.calories,
+                quantity: currentQuantity,
+                id: currentProduct._id
+            })
+        }
+        return combined
+    }
+
+    componentWillReceiveProps(nextProps){
+        let combined = this.state.combined
+        combined = this.mergeProducts(nextProps.products, nextProps.quantity)
         this.setState({
-            day: this.setDay(new Date(this.props.date)),
-            dateInFormat: new Date(this.props.date).toDateString()
+            combined
         })
     }
+
+    componentDidMount() {
+        let combined = this.state.combined
+        combined = this.mergeProducts(this.props.products, this.props.quantity)
+        this.setState({
+            day: this.setDay(new Date(this.props.date)),
+            dateInFormat: new Date(this.props.date).toDateString(),
+            combined
+        })
+    }
+
+    component
 
     setDay(date) {
         let result = ''
@@ -55,6 +85,13 @@ export default class Note extends Component {
     }
 
     render() {
+        let products = this.state.combined.map((product, id) => (
+            <tr key={id}>
+                <td>{product.name}</td>
+                <td>{product.quantity}</td>
+                <td>{product.calories}</td>
+            </tr>
+        ))
         return (
             <div className="note">
                 <div className="heading">
@@ -65,14 +102,14 @@ export default class Note extends Component {
                 <div className="content">
                     <table className="field">
                         <thead>
-                            <th>Product</th>
-                            <th>Quantity</th>
-                            <th>Calories</th>
+                            <tr>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Calories</th>
+                            </tr>
                         </thead>
                         <tbody>
-                            <td>{this.props.products}</td>
-                            <td>{this.props.quantity}</td>
-                            <td>{this.props.calories}</td>
+                            {products}
                         </tbody>
                     </table>
 

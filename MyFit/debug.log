@@ -1,3 +1,9 @@
 [0711/013511.793:ERROR:crash_report_database_win.cc(426)] unexpected header
 [0711/014524.559:ERROR:crash_report_database_win.cc(426)] unexpected header
 [0711/104157.844:ERROR:crash_report_database_win.cc(426)] unexpected header
+[0711/161144.630:ERROR:process_info.cc(631)] range at 0xd5ed5c8800000000, size 0x12a fully unreadable
+[0711/161144.631:ERROR:process_info.cc(631)] range at 0xd5ed5cec00000000, size 0x12a fully unreadable
+[0711/161144.631:ERROR:process_info.cc(631)] range at 0x0, size 0x12a fully unreadable
+[0711/161156.368:ERROR:process_info.cc(631)] range at 0x23cf5c8800000000, size 0x200 fully unreadable
+[0711/161156.368:ERROR:process_info.cc(631)] range at 0x23cf5cec00000000, size 0x200 fully unreadable
+[0711/161156.368:ERROR:process_info.cc(631)] range at 0x0, size 0x200 fully unreadable

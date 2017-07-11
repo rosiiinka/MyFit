@@ -8,6 +8,7 @@ class Auth {
         window.localStorage.setItem('token', user.token)
         window.localStorage.setItem('currentUser', user.username)
         window.localStorage.setItem('roles', user.roles)
+        window.localStorage.setItem('userId', user.id)
     }
 
     static deAuthenticateUser() {
