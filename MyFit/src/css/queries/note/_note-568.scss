@@ -1,0 +1,22 @@
+.create-note {
+	@include flex-container(row nowrap, space-between, flex-start);
+
+	.list-all {
+		width: 50%;
+	}
+
+	.create-new {
+		width: 50%;
+
+		form {
+			@include flex-container(row nowrap, space-between, center);
+			width: 70%;
+
+			fieldset {
+				.add-new-one {
+					display: block;
+				}
+			}
+		}
+	}
+}

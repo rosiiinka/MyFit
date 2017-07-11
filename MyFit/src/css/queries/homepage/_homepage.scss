@@ -1,0 +1,38 @@
+.homepage {
+	.modes-container {
+		@include maxWidth(1366px);
+		background: #fff;
+		padding: 40px 0;
+		
+		.flex-container {
+			@include flex-container(row nowrap, space-between, stretch);
+
+			.flex-child {
+				height: 200px;
+				
+				h1 {
+					text-align: center;
+				}
+
+				&.image {
+					width: 70%;
+					background-image: url('http://static6.businessinsider.com/image/56003ace9dd7cc11008bbe22-2400/fitness-workout.jpg');
+					background-size: cover;
+					background-position: center center;
+				}
+			}
+		}
+		
+		.mode {
+			padding: 20px;
+
+			p {
+				padding-top: 20px;
+			}
+
+			&:nth-child(even) {
+				background: #eee;
+			}
+		}
+	}
+}

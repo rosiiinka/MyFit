@@ -1,0 +1,34 @@
+.contact {
+	background: #eee;
+
+	.row {
+		@include maxWidth(1366px);
+		margin-bottom: 10px;
+		background: #fff;
+		padding: 40px 0;
+
+		h1 {
+			text-align: center;
+		}
+
+		.flex-container {
+			@include flex-container(row nowrap, space-between, flex-start);
+			
+			.flex-child {
+				padding: 0 20px;
+			}
+
+			ul {
+				list-style: none;
+			}
+		}
+
+		&:last-child {
+			margin-bottom: 0;
+
+			iframe {
+				width: 100%;
+			}
+		}
+	}
+}

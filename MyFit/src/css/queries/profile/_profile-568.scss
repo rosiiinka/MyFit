@@ -1,0 +1,27 @@
+.profile-page {
+	@include flex-container(row nowrap, space-between, flex-start);
+
+	.about-user {
+		width: 30%;
+
+		.flex-child {
+			width: 100%;
+
+			&:first-child {
+				background: #fff;
+				padding: 20px;
+				width: 100%;
+				box-shadow: 10px 10px 5px #888888;
+			}
+		}
+	}
+
+	.my-notes {
+		@include flex-container(row wrap, space-between, flex-start);
+		width: 70%;
+
+		.note {
+			width: 49%;
+		}
+	}
+}

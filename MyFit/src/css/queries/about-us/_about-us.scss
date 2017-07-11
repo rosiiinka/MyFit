@@ -1,0 +1,36 @@
+.about-us {
+	background: #eee;
+	padding: 40px 0;
+
+	.about-jumbotron, .founders {
+		@include maxWidth(1366px);
+		background: #fff;
+		border: 1px solid #bbb;
+		padding: 20px;
+	} 
+	
+	.founders {
+		margin-top: 10px;
+
+		h2 {
+			font-weight: bold;
+			text-align: center;
+		}
+
+		.flex-prifle {
+			.flex-child {
+				p {
+					@include fontSize(24px);
+					padding-top: 20px;
+					font-family: $roboto;
+				}
+
+				img {
+					width: 243px;
+					height: 243px;
+					margin: 0 auto;
+				}
+			}
+		}
+	}
+}

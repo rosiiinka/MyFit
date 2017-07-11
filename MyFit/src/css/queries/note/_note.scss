@@ -1,0 +1,91 @@
+.last-note {
+	background: #fff;
+	width: 100%;
+	padding: 40px 0;
+}
+
+.note {
+	@include maxWidth(1000px);
+	border: 1px solid #bbb;
+	padding: 20px;
+
+	.heading {
+		padding-bottom: 30px;
+
+		h1 {
+			@include fontSize(34px);
+			text-align: center;
+		}
+	}
+
+	.content {
+		.field {
+			width: 100%;
+
+			th, td {
+				width: 50%;
+			}
+
+			td:first-child {
+				color: #4e944e;
+			}
+		}
+	}
+
+	.button {
+		padding-top: 20px;
+	}
+}
+
+.create-note {
+	background: #fff;
+	padding: 40px;
+
+	.list-all {
+		max-height: 500px;
+		overflow-x: hidden;
+
+		.single-note {
+			margin-bottom: 10px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	.create-new {
+		form {
+			padding: 10px;
+			margin: 0 auto;
+
+			fieldset {
+				position: relative;
+				width: auto;
+
+				input {
+					width: 100%;
+					padding: 10px 15px;
+
+					&:focus {
+						outline: none;
+					}
+				}
+
+				.add-new-one {
+					position: absolute;
+					width: 30px;
+					top: -2px;
+					right: -40px;
+					z-index: 9999;
+					max-width: none !important;
+					display: none;
+
+					&:hover {
+						cursor: pointer;
+					}
+				}
+			}
+		}
+	}
+}

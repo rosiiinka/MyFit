@@ -1,0 +1,80 @@
+$roboto: 'Roboto', sans-serif;
+
+@function calculateRem($size) {
+	$remSize: $size / 16px;
+	@return #{$remSize}rem;
+}
+
+@mixin maxWidth($size) {
+	max-width: calculateRem($size);
+	margin: 0 auto;
+}
+
+@mixin fontSize($size) {
+	font-size: calculateRem($size);
+}
+
+@mixin centerElement() {
+	margin: 0 auto;
+	font-size: 0;
+}
+
+@mixin alignElement($align) {
+	display: inline-block;
+	vertical-align: $align;
+}
+
+@mixin background($url, $position, $repeat) {
+	background-image: url($url);
+	background-position: $position;
+	background-repeat: $repeat;
+}
+
+@mixin transition($property, $speed) {
+    -webkit-transition: $property $speed ease;
+    -moz-transition: $property $speed ease;
+    -o-transition: $property $speed ease;
+    transition: $property $speed ease;
+}
+
+@mixin flexbox($justify-content) {
+	display: -webkit-box;  
+	display: -ms-flexbox;  
+	display: -webkit-flex;
+	display: flex; 
+
+	justify-content: $justify-content;	
+	-webkit-justify-content: $justify-content;	
+	-moz-justify-content: $justify-content;	
+	-ms-justify-content: $justify-content;	
+}
+
+@mixin alignself($alignSelf) {
+	align-self: $alignSelf;
+	-webkit-align-self: $alignSelf;
+	-moz-align-self: $alignSelf;
+	-ms-align-self: $alignSelf;
+}
+
+@mixin flex-container($flexflow, $justifycontent, $alignitems) {
+    display: -webkit-flex;
+    display: flex;
+    
+    -webkit-flex-flow: $flexflow;
+    flex-flow: $flexflow;
+    
+    -webkit-justify-content: $justifycontent;
+    justify-content: $justifycontent;
+    
+    -webkit-align-items: $alignitems;
+    align-items: $alignitems;
+
+}
+
+@mixin unknown_centering() {
+	left: 50%;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+}

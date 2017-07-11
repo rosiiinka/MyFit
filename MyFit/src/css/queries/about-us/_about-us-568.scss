@@ -1,0 +1,11 @@
+.about-us {
+	.founders {
+		.flex-prifle {
+			@include flex-container(row nowrap, space-between, flex-start);
+
+			.flex-child {
+				width: 30%;
+			}
+		}
+	}
+}

@@ -1,0 +1,16 @@
+.login-container, .register-container {
+	@include maxWidth(966px);
+	padding: 10px;
+
+	input[type="submit"] {
+		@include fontSize(30px);
+		appearance: none;
+		background: #4b59fd;
+		border: none;
+		outline: none;
+		color: #fff;
+		display: block;
+		margin: 0 auto;
+		width: 80%; 
+	}
+}

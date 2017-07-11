@@ -1,0 +1,27 @@
+.profile-page {
+	@include maxWidth(1366px);
+	background: #fff;
+	padding: 40px;
+
+	.about-user {
+		padding: 40px;
+
+		h1 {
+			text-align: left;
+		}
+
+		ul {
+			list-style: none;
+		}
+	}
+
+	.my-notes {
+		max-height: 300px;
+		overflow-x: hidden;
+
+		.note {
+			width: 100%;
+			margin-top: 5px;
+		}
+	}
+}

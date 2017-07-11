@@ -7,7 +7,13 @@ class ModeStore extends EventEmitter {
         ModeData
         .createMode(mode) 
         .then(data => this.emit(this.eventTypes.CREATE_MODE, data))
-        console.log(mode)
+        console.log(mode) 
+    }
+
+    getAll() {
+        return ModeData
+        .getAll()
+        .then(data => { return data })
     }
 
     handleAction (action) {
@@ -24,7 +30,8 @@ class ModeStore extends EventEmitter {
 let modeStore = new ModeStore()
 
 modeStore.eventTypes = {
-    CREATE_MODE: 'CREATE_MODE'
+    CREATE_MODE: 'CREATE_MODE',
+    GETALL_MODE: 'GETALL_MODE'
 }
 
 dispatcher.register(modeStore.handleAction.bind(modeStore))

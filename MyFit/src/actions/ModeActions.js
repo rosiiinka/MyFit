@@ -5,7 +5,13 @@ const modeActions = {
         dispatcher.dispatch({
             type: 'CREATE_MODE', 
             mode
-        })
+        }) 
+    },
+    getAll: (mode) => {
+        dispatcher.dispatch({
+            type: 'GETALL_MODE', 
+            mode
+        }) 
     }
 }
 

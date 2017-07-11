@@ -44,6 +44,7 @@ class CreateMode extends Component {
         toastr.success("You've successfully created a mode!")
 
         ModeActions.createMode(this.state.mode)
+        this.props.history.push('/modes')
     }
     
     validateMode(){

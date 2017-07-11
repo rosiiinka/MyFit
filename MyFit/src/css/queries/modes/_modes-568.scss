@@ -1,0 +1,33 @@
+.modes-container {
+	@include maxWidth(1000px);
+	@include flex-container(row nowrap, space-between, flex-start);
+	background: #fff;
+	padding: 30px;
+	position: relative;
+}
+
+.single-mode {
+	@include maxWidth(1366px);
+	background: #fff;
+	padding: 30px; 
+}
+
+.btn-create {
+	margin-top: 20px;
+	position: absolute;
+
+	.btn-green {
+		background: #05b52b;
+		color: #fff;
+		position: fixed;
+		right: 20%;
+		top: 40%;
+		margin-top: -17px;
+		font-weight: bold;
+		padding: 20px 35px;
+	}
+}
+
+.create-mode {
+	@include maxWidth(1000px);
+}
