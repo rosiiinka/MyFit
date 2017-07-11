@@ -12,8 +12,10 @@ import NotesPage from '../components/notes/NotesPage'
 import ModesPage from '../components/modes/ModesPage'
 import ModePage from '../components/modes/ModePage'
 import CreateModePage from '../components/modes/CreateModePage'
+import ProductPage from '../components/product/ProductPage'
 import PrivateRoute from './PrivateRoute'
 import PrivateRouteForLogin from './PrivateRouteForLogin'
+import PrivateRouteForAdmin from './PrivateRouteForAdmin'
  
 export default () => (
     <Switch>
@@ -28,6 +30,7 @@ export default () => (
         <PrivateRoute path='/user/logout' component={LogoutPage} />
         <PrivateRoute path='/user/notes' component={NotesPage} />
         <PrivateRoute path='/mode/create' component={CreateModePage} />
+        <PrivateRouteForAdmin path='/product/add' component={ProductPage} />
         <Route component={PageNotFound} />
     </Switch>
 )

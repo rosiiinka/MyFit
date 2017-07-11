@@ -35,7 +35,7 @@ class LoginForm extends Component {
         event.preventDefault()
         let user = this.state.user
         UserStore.login(user).then(data => {
-            Auth.authenticate(data.user.token, data.user.username)
+            Auth.authenticate(data.user)
             this.props.history.push('/')
         })        
     }

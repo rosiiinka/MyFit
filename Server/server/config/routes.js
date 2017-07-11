@@ -9,4 +9,8 @@ module.exports = (app) => {
   app.post('/users/get', handlers.user.getByUsername)
 
   app.post('/products/add', handlers.product.add)
+  app.get('/products/all', handlers.product.all)
+
+  app.post('/notes/add', handlers.note.add)
+  app.get('/notes/all', handlers.note.all)
 }

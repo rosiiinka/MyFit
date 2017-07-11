@@ -4,20 +4,10 @@ import UserData from '../database/UserData'
 
 class Auth {
 
-    static authenticate(token, username) {
-        window.localStorage.setItem('token', token)
-        window.localStorage.setItem('currentUser', username)
-        window.localStorage.setItem('lg', true)
-    }
-
-    static isAuthenticated(username) {
-        let user = UserActions.getByUsername(username)
-        let token = window.localStorage.getItem('token')
-        if (user.token === token) {
-            return true
-        } else {
-            return false
-        }
+    static authenticate(user) {
+        window.localStorage.setItem('token', user.token)
+        window.localStorage.setItem('currentUser', user.username)
+        window.localStorage.setItem('roles', user.roles)
     }
 
     static deAuthenticateUser() {
@@ -25,26 +15,23 @@ class Auth {
     }
 
     static areWeHaveUser() {
-        let username = window.localStorage.getItem('currentUser')
         let token = window.localStorage.getItem('token')
-        return UserStore.getByUsername(username).then(data => {
-            if (data.user) {
-                let user = data.user
-                if (user.token === token) {
-                    return true
-                } else {
-                    return false
-                }
-            }
-        })
+
+        if(token !== '' && token !== null && token !== undefined) {
+            return true
+        } else {
+            return false
+        }
     }
 
     static isInRole(role) {
-        let username = window.localStorage.getItem('currentUser')
-
-        return UserStore.getByUsername(username).then(data => {
-            return data.user.roles.indexOf(role) !== -1
-        })
+        let roles = window.localStorage.getItem('roles').split(',')
+        
+        if(roles.indexOf(role) !== -1) {
+            return true
+        } else {
+            return false
+        }
     }
 }
 

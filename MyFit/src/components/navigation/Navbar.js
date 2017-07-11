@@ -5,22 +5,6 @@ import Auth from '../../utilities/Auth'
 import LoginForm from "../user/LoginForm";
 
 class Navbar extends Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            loggedIn: false
-        }
-    }
-
-    componentDidMount() {
-        Auth.areWeHaveUser().then(result => {
-            this.setState({
-                loggedIn: result
-            })
-        })
-    }
-
     render () {
         return (
             <nav className="navbar navbar-inverse">
@@ -40,7 +24,10 @@ class Navbar extends Component {
                             <li><Link to='/about'>About us</Link></li>
                             <li><Link to='/contacts'>Contacts</Link></li>
                             {
-                                this.state.loggedIn ? <li><Link to='/user/notes'>Notes</Link></li> : false  
+                                Auth.areWeHaveUser() ? <li><Link to='/user/notes'>Notes</Link></li> : false  
+                            }
+                            {
+                                Auth.isInRole('Admin') ? <li><Link to='/product/add'>Add Product</Link></li> : false                                  
                             }
                             <li><Link to='/modes'>Modes</Link></li>
                         </ul>

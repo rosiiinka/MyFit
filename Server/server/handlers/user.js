@@ -17,7 +17,8 @@ module.exports.login = (req, res) => {
           message: 'successfuly logged in',
           user: {
             username: user.username,
-            token: token
+            token: token,
+            roles: user.roles
           }
         })
       } else {

@@ -9,5 +9,15 @@ module.exports = {
                 'Content-Type': 'application/json'
             }
         }).then(res => res.json())
+    },
+    getAll: () => {
+        return window.fetch('http://localhost:1337/products/all', {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json())
     }
 }

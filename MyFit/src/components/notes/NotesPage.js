@@ -1,58 +1,53 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 
 import UserStore from '../../stores/UserStore'
+import NoteStore from '../../stores/NoteStore'
 import Note from './Note'
 import CreateNote from './CreateNote'
 
-class NotesPage extends Component{
+class NotesPage extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            user: {
-                username: 'Niki',
-                notes: [
-                    {id: 1, date: '10/07/2016', product: 'Pizza', calories: '240/100', when: 'Monday'},
-                    {id: 2, date: '12/04/2017', product: 'Musle', calories: '200/100', when: 'Firday'},
-                    {id: 2, date: '12/04/2017', product: 'Musle', calories: '200/100', when: 'Firday'}
-                ]
-            }
+            notes: []
         }
 
         this.listAllNotes = this.listAllNotes.bind(this)
+        this.listAllNotes()
 
-        UserStore.on(
-            UserStore.eventTypes.CREATE_NOTE, 
+        NoteStore.on(
+            NoteStore.eventTypes.ADD_NOTE,
             this.listAllNotes
         )
     }
 
-    listAllNotes(data) {
-        let notes = this.state.user.notes
-        let user = this.state.user 
-
-        user[notes]
-        this.setState({
-            user: data.notes
+    listAllNotes() {
+        NoteStore.getAll().then(data => {
+            this.setState({
+                notes: data.notes
+            })
         })
     }
 
     render() {
-        let notes = this.state.user.notes.map((note, id) => (
-            <div className="single-note">
-                <Note 
-                key={ id }
-                when={ note.when }
-                date={ note.date }
-                product={ note.product }
-                calories={ note.calories } />
-            </div>
-        ))
-        
-        return(
+        let notes = []
+        if (this.state.notes.length !== 0) {
+            notes = this.state.notes.map((note, id) => (
+                <div className="single-note">
+                    <Note
+                        key={id}
+                        date={note.date}
+                        products={note.products}
+                        calories={'note.calories'} />
+                </div>
+            ))
+        }
+
+        return (
             <div className="create-note">
                 <div className="list-all">
-                    { notes }
+                    {notes}
                 </div>
 
                 <CreateNote />

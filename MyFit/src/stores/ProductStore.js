@@ -9,6 +9,12 @@ class ProductStore extends EventEmitter {
         .then(data => this.emit(this.eventTypes.ADD_PRODUCT, data))
     }
 
+    getAll() {
+        return ProductData
+        .getAll()
+        .then(data => {return data})
+    }
+
     handleAction (action) {
         switch (action.type) {
             case 'ADD_PRODUCT': {

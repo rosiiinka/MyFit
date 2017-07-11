@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 
-import UserActions from '../../actions/UserActions'
+import NoteActions from '../../actions/NoteActions'
+import NoteStore from '../../stores/NoteStore'
+import ProductStore from '../../stores/ProductStore'
 import toastr from 'toastr'
 
 class CreateSingleNote extends Component{
@@ -10,13 +12,29 @@ class CreateSingleNote extends Component{
         this.state = {
             note: {
                 product: '',
-                quantity: ''
+                quantity: '',
+                date: new Date()
             },
+            products: [],
             error: ''
         }
 
         this.handleChange = this.handleChange.bind(this)
         this.createNote = this.createNote.bind(this)
+        this.handleCreatingNote = this.handleCreatingNote.bind(this)
+
+        NoteStore.on(
+            NoteStore.eventTypes.ADD_NOTE,
+            this.handleCreatingNote
+        )
+    }
+
+    componentDidMount() {
+        ProductStore.getAll().then(data => {
+            this.setState({
+                products: data.products
+            })
+        })
     }
 
     handleChange(event) {
@@ -34,25 +52,31 @@ class CreateSingleNote extends Component{
     }
 
     createNote() {
-        let product = this.state.note.product;
-        let quantity = this.state.note.quantity;
+        NoteActions.add(this.state.note)
+    }
 
-        if(product === '' || quantity === '') {
-            toastr.error("All fields required!")
-            return
+    handleCreatingNote(data) {
+        if(data.success) {
+            toastr.success(data.message)
+            NoteStore.emit(NoteStore.eventTypes.ADD_NOTE)
+        } else {
+            toastr.error(data.message)
         }
-
-        UserActions.createNote(this.state.note)
     }
 
     render() {
+        let options = this.state.products.map(product => (
+            <option key={product._id} value={product._id}>
+                {product.name}
+            </option>
+        ))
         return(     
             <form>
-              
-                
                 <fieldset>
-                    <label htmlFor="product">Product</label>
-                    <input type="text" name="product" value={this.state.note.product} onChange={this.handleChange} />
+                    <label htmlFor="product">Product </label>
+                    <select name='product' onChange={this.handleChange.bind(this)}>
+                        {options}
+                    </select>
                 </fieldset>
 
                 <fieldset>
