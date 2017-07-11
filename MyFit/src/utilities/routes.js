@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Switch } from 'react-router-dom'
+import {Route, Switch} from 'react-router-dom'
 import HomePage from '../components/home/HomePage'
 import AboutPage from '../components/about/AboutPage'
 import LoginPage from '../components/user/LoginPage'
@@ -16,21 +16,21 @@ import ProductPage from '../components/product/ProductPage'
 import PrivateRoute from './PrivateRoute'
 import PrivateRouteForLogin from './PrivateRouteForLogin'
 import PrivateRouteForAdmin from './PrivateRouteForAdmin'
- 
+
 export default () => (
     <Switch>
-        <Route exact path='/' component={HomePage} />
-        <Route path='/about' component={AboutPage} />
-        <Route path='/contacts' component={ContactsPage} />
-        <PrivateRouteForLogin path='/user/register' component={RegisterPage} />
-        <PrivateRouteForLogin path='/user/login' component={LoginPage} />
-        <Route path='/modes' component={ModesPage} />
-        <Route path='/mode/:id' component={ModePage} />
-        <PrivateRoute path='/user/profile' component={ProfilePage} />
-        <PrivateRoute path='/user/logout' component={LogoutPage} />
-        <PrivateRoute path='/user/notes' component={NotesPage} />
-        <PrivateRoute path='/mode/create' component={CreateModePage} />
-        <PrivateRouteForAdmin path='/product/add' component={ProductPage} />
-        <Route component={PageNotFound} />
+        <Route exact path='/' component={HomePage}/>
+        <Route path='/about' component={AboutPage}/>
+        <Route path='/contacts' component={ContactsPage}/>
+        <PrivateRouteForLogin path='/user/register' component={RegisterPage}/>
+        <PrivateRouteForLogin path='/user/login' component={LoginPage}/>
+        <PrivateRoute path='/user/notes' component={NotesPage}/>
+        <PrivateRoute path='/modes' component={ModesPage}/>
+        <PrivateRoute path='/mode/:id' component={ModePage}/>
+        <PrivateRoute path='/mode/create' component={CreateModePage}/>
+        <PrivateRouteForAdmin path='/product/add' component={ProductPage}/>
+        <PrivateRoute path='/user/profile' component={ProfilePage}/>
+        <PrivateRoute path='/user/logout' component={LogoutPage}/>
+        <Route component={PageNotFound}/>
     </Switch>
 )
