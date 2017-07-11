@@ -17,7 +17,7 @@ class Auth {
     static areWeHaveUser() {
         let token = window.localStorage.getItem('token')
 
-        if(token !== '' && token !== null && token !== undefined) {
+        if (token !== '' && token !== null && token !== undefined) {
             return true
         } else {
             return false
@@ -25,13 +25,18 @@ class Auth {
     }
 
     static isInRole(role) {
-        let roles = window.localStorage.getItem('roles').split(',')
-        
-        if(roles.indexOf(role) !== -1) {
-            return true
+        let roles = window.localStorage.getItem('roles')
+        if (roles) {
+            roles = roles.split(',')
+            if (roles.indexOf(role) !== -1) {
+                return true
+            } else {
+                return false
+            }
         } else {
             return false
         }
+
     }
 }
 
