@@ -90,7 +90,7 @@ export default class Note extends Component {
             <tr key={id}>
                 <td>{product.name}</td>
                 <td>{product.quantity}</td>
-                <td>{product.calories}</td>
+                <td>{ ((product.calories / 100) * product.quantity).toFixed(2) }</td>
             </tr>
         ))
         return (

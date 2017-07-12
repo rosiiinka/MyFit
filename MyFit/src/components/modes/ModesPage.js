@@ -31,9 +31,10 @@ class ModesPage extends Component {
     }
 
     render() {
+        var dateFormat = require('dateformat')
         let { modes } = this.state
         let mode = modes.map( (mode, index) => 
-            <Mode heading={ mode.title } content={ mode.content } date={ mode.date } id={ mode._id } key={ index } />
+            <Mode heading={ mode.title } content={ mode.content } date={ dateFormat(mode.date, "dddd, mmmm dS, yyyy") } id={ mode._id } key={ index } />
         )
 
         return (

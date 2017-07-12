@@ -2,10 +2,31 @@
 	@include maxWidth(1366px);
 	background: #fff;
 	padding: 30px;
+
+	.modes {
+		p {
+			white-space: nowrap;
+		    overflow: hidden;
+		    text-overflow: ellipsis;
+		    max-width: 75ch;
+		}
+	}
 }
 
 .single-mode {
-	@include maxWidth(1366px);
 	background: #fff;
 	padding: 30px;
+
+	h2 {
+		font-size: 24px !important;
+		color: green;
+	}
+
+	small {
+		font-size: 14px !important;
+	}
+
+	p {
+		font-size: 19px !important;
+	}
 }
