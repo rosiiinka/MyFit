@@ -23,13 +23,11 @@ class Navbar extends Component {
                         <ul className="nav navbar-nav">
                             <li><Link to='/about'>About us</Link></li>
                             <li><Link to='/contacts'>Contacts</Link></li>
-                            {
-                                Auth.areWeHaveUser() ? <li><Link to='/user/notes'>Notes</Link></li> : false  
-                            }
-                            {
-                                Auth.isInRole('Admin') ? <li><Link to='/product/add'>Add Product</Link></li> : false                                  
-                            }
-                            <li><Link to='/modes'>Modes</Link></li>
+                            { Auth.areWeHaveUser() ? <li><Link to='/user/notes'>Notes</Link></li> : false }
+
+                            { Auth.areWeHaveUser() ? <li><Link to='/modes'>Modes</Link></li> : false }
+
+                            { Auth.isInRole('Admin') ? <li><Link to='/product/add'>Add Product</Link></li> : false }
                         </ul>
 
                         { Auth.areWeHaveUser() ?
