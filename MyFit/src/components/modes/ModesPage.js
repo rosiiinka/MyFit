@@ -4,7 +4,6 @@ import toastr from 'toastr'
 
 import Mode from './Mode'
 import ModeStore from '../../stores/ModeStore'
-import ModeActions from '../../actions/ModeActions'
 
 class ModesPage extends Component {
     constructor (props) {

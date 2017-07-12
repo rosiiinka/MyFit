@@ -79,6 +79,7 @@ export default class Note extends Component {
                 result = 'Saturday' 
                 break
             }
+            default: break
         }
 
         return result

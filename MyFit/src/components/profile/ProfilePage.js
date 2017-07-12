@@ -1,6 +1,4 @@
 import React, {Component} from 'react'
-import UserStore from '../../stores/UserStore'
-import UserActions from '../../actions/UserActions'
 import Note from '../notes/Note'
 import NoteStore from '../../stores/NoteStore'
 
