@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import UserActions from '../../actions/UserActions'
 import UserStore from '../../stores/UserStore'
 import InputText from '../common/InputText'
 import InputPassword from '../common/InputPassword'

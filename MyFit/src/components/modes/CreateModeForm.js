@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import toastr from 'toastr'
 import InputText from '../common/InputText'
 import ModeActions from '../../actions/ModeActions'
-import ModeStore from '../../stores/ModeStore'
+
 
 
 class CreateMode extends Component {

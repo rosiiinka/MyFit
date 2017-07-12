@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import Auth from '../../utilities/Auth'
-import UserStore from '../../stores/UserStore'
 
 class AboutPage extends Component {
     componentDidMount() {

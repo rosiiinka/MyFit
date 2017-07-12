@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 import Auth from '../../utilities/Auth'
 import UserStore from '../../stores/UserStore'
 

@@ -1,6 +1,4 @@
-import UserActions from '../actions/UserActions'
-import UserStore from '../stores/UserStore'
-import UserData from '../database/UserData'
+
 
 class Auth {
 

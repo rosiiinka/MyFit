@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import UserStore from '../../stores/UserStore'
 import Auth from '../../utilities/Auth'
-import LoginForm from "../user/LoginForm";
+
 
 class Navbar extends Component {
     render () {

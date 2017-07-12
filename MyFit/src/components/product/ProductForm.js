@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
-import ProductActions from '../../actions/ProductActions'
 import ProductStore from '../../stores/ProductStore'
 import InputText from '../common/InputText'
-import InputPassword from '../common/InputPassword'
-import Auth from '../../utilities/Auth'
 import toastr from 'toastr'
 
 
