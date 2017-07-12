@@ -34,7 +34,7 @@ class ModesPage extends Component {
     render() {
         let { modes } = this.state
         let mode = modes.map( (mode, index) => 
-            <Mode heading={ mode.title } content={ mode.content } date={ mode.date } id={ mode._id } />
+            <Mode heading={ mode.title } content={ mode.content } date={ mode.date } id={ mode._id } key={ index } />
         )
 
         return (

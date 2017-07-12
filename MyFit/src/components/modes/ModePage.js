@@ -7,7 +7,8 @@ class ModePage extends Component {
         super(props)
 
         this.state = {
-            modes: []
+            modes: [],
+            mode: {}
         }
 
         ModeStore.getAll().then(data => {
@@ -15,8 +16,6 @@ class ModePage extends Component {
                 modes: data.mode
             })
         })
-
-        this.getElement = this.getElement.bind(this)
     }
 
     componentDidMount() {
@@ -24,29 +23,28 @@ class ModePage extends Component {
             this.setState({
                 modes: data.mode
             })
-        })
-    }
 
-    getElement(arr, value) {
-        if(!this.state.modes) {
-            return
-        } else {
-            for(let i = 0; i < arr.length; i++) {
-                if(arr[i]._id === value) {
-                    return arr[i]
+            let { modes } = this.state
+
+            if(modes !== undefined || modes !== null) {
+                for(let i = 0; i < modes.length; i++) {
+                    if(modes[i]['_id'] === this.props.match.params.id) {
+                        this.setState({
+                            mode: modes[i]
+                        })
+                    }
                 }
             }
-        }
+        }) 
     }
 
     render() {
-        let paramId = this.props.match.params.id
-        let mode = this.getElement(this.state.modes, paramId)
-
         return (
             <div className="single-mode">
                 <article>
-                    <p></p>
+                    <h2>{ this.state.mode.title } </h2>
+                    <small><i>{ this.state.mode.date }</i></small>
+                    <p> { this.state.mode.content } </p>
                 </article>
             </div> 
         );
