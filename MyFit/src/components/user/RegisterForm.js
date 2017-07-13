@@ -62,51 +62,50 @@ class RegisterForm extends Component {
 
     validateRegister() {
         let user = this.state.user
-        let formIsValid = true
+
+        if (!user.username || user.username.length < 3) {
+            this.setState({
+                error: 'Username should be at least 3 symbols'
+            })
+            return false
+        }
 
         if (user.password === '' || user.confirmPassword === '') {
-            formIsValid = false
             this.setState({
                 error: 'Your password shouldnt be empty'
             })
+            return false
         }
 
         if (user.password !== user.confirmPassword) {
             this.setState({
                 error: 'Your password do not match'
             })
-            formIsValid = false
-        }
-
-        if (!user.username || user.username.length < 3) {
-            this.setState({
-                error: 'Username should be at least 3 symbols'
-            })
-            formIsValid = false
-        }
+            return false
+        }        
 
         if (!user.password || user.password.length < 4) {
             this.setState({
                 error: 'Password should be at least 4 symbols'
             })
-            formIsValid = false
+            return false
         }
 
         if (!user.firstName || user.firstName.length < 3) {
             this.setState({
                 error: 'First Name should be at least 3 symbols'
             })
-            formIsValid = false
+            return false
         }
 
         if (!user.lastName || user.lastName.length < 3) {
             this.setState({
                 error: 'Last Name should be at least 3 symbols'
             })
-            formIsValid = false
+            return false
         }
 
-        return formIsValid
+        return true
     }
 
     handleUserRegistration(data) {
