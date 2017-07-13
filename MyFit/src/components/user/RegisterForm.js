@@ -52,25 +52,30 @@ class RegisterForm extends Component {
     registerUser(event) {
         event.preventDefault()
 
-        if (!this.validateRegister()){
-            return
+        if (this.validateRegister()){
+            let user = this.state.user
+            UserActions.register(user)
+        } else {
+            toastr.error(this.state.error)
         }
-
-        toastr.success("You've registered successfully")
-
     }
 
     validateRegister() {
         let user = this.state.user
         let formIsValid = true
 
-        if (user.password === '' || user.password !== user.confirmPassword) {
+        if (user.password === '' || user.confirmPassword === '') {
+            formIsValid = false
+            this.setState({
+                error: 'Your password shouldnt be empty'
+            })
+        }
+
+        if (user.password !== user.confirmPassword) {
             this.setState({
                 error: 'Your password do not match'
             })
             formIsValid = false
-        } else {
-            UserActions.register(user)
         }
 
         if (!user.username || user.username.length < 3) {
@@ -78,9 +83,6 @@ class RegisterForm extends Component {
                 error: 'Username should be at least 3 symbols'
             })
             formIsValid = false
-        } else {
-            UserActions.register(user)
-
         }
 
         if (!user.password || user.password.length < 4) {
@@ -88,9 +90,6 @@ class RegisterForm extends Component {
                 error: 'Password should be at least 4 symbols'
             })
             formIsValid = false
-        } else {
-            UserActions.register(user)
-
         }
 
         if (!user.firstName || user.firstName.length < 3) {
@@ -98,9 +97,6 @@ class RegisterForm extends Component {
                 error: 'First Name should be at least 3 symbols'
             })
             formIsValid = false
-        } else {
-            UserActions.register(user)
-
         }
 
         if (!user.lastName || user.lastName.length < 3) {
@@ -108,10 +104,8 @@ class RegisterForm extends Component {
                 error: 'Last Name should be at least 3 symbols'
             })
             formIsValid = false
-        } else {
-            UserActions.register(user)
-
         }
+
         return formIsValid
     }
 
@@ -122,7 +116,7 @@ class RegisterForm extends Component {
             this.props.history.push('/')
         } else {
             this.setState({
-                error: 'This username already exist'
+                error: data.message
             })
         }
     }

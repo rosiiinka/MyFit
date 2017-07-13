@@ -17,6 +17,8 @@ class LoginForm extends Component {
             },
             error: ''
         }
+
+        this.validateForm = this.validateForm.bind(this)
     }
 
     handleChange(event) {
@@ -33,20 +35,40 @@ class LoginForm extends Component {
         })
     }
 
+    validateForm() {
+        let user = this.state.user
+        let valid = true
+
+        if (!user.username || user.username.length <= 3) {
+            valid = false
+            this.setState({
+                error: 'username caanot be empty or less than 3 symbols'
+            })
+        }
+
+        if (!user.password) {
+            valid = false
+            this.setState({
+                error: 'password cannot be empty'
+            })
+        }
+
+        return valid
+    }
+
     loginUser(event) {
         event.preventDefault()
         let user = this.state.user
 
-        if(!user.username || user.username < 3) {
-            return
+        if (this.validateForm()) {
+            UserStore.login(user).then(data => {
+                Auth.authenticate(data.user)
+                toastr.success("You've login successfully")
+                this.props.history.push('/')
+            })
+        } else {
+            toastr.error(this.state.error)
         }
-
-        UserStore.login(user).then(data => {
-            Auth.authenticate(data.user)
-            this.props.history.push('/')
-        })
-      
-        toastr.success("You've registered successfully")
     }
 
     render() {
