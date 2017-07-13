@@ -39,13 +39,11 @@ class ModePage extends Component {
     }
 
     render() {
-        var dateFormat = require('dateformat')
-        
         return (
             <div className="single-mode">
                 <article>
                     <h2>{ this.state.mode.title } </h2>
-                    <small><i>{ dateFormat(this.state.mode.date, "dddd, mmmm dS, yyyy") }</i></small>
+                    <small><i>{ this.state.mode.date }</i></small>
                     <p> { this.state.mode.content } </p>
                 </article>
             </div> 

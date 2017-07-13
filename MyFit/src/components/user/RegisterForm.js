@@ -117,7 +117,7 @@ class RegisterForm extends Component {
 
     handleUserRegistration(data) {
         if (data.success) {
-            Auth.authenticate(data.createdUser.token, data.createdUser.username)
+            Auth.authenticate(data.createdUser)
             UserStore.emit(UserStore.eventTypes.SET_USER)
             this.props.history.push('/')
         } else {

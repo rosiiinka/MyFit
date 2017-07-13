@@ -3,9 +3,6 @@ import UserStore from '../../stores/UserStore'
 import InputText from '../common/InputText'
 import InputPassword from '../common/InputPassword'
 import Auth from '../../utilities/Auth'
-import toastr from 'toastr'
-import UserActions from '../../actions/UserActions'
-
 
 class LoginForm extends Component {
     constructor(props) {
@@ -36,17 +33,10 @@ class LoginForm extends Component {
     loginUser(event) {
         event.preventDefault()
         let user = this.state.user
-
-        if(!user.username || user.username < 3) {
-            return
-        }
-
         UserStore.login(user).then(data => {
             Auth.authenticate(data.user)
             this.props.history.push('/')
-        })
-      
-        toastr.success("You've registered successfully")
+        })        
     }
 
     render() {
