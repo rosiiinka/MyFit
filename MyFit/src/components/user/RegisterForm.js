@@ -64,13 +64,13 @@ class RegisterForm extends Component {
         let user = this.state.user
         let formIsValid = true
 
-        if (user.password === user.confirmPassword) {
-            UserActions.register(user)
-        } else {
+        if (user.password === '' || user.password !== user.confirmPassword) {
             this.setState({
                 error: 'Your password do not match'
             })
             formIsValid = false
+        } else {
+            UserActions.register(user)
         }
 
         if (!user.username || user.username.length < 3) {
