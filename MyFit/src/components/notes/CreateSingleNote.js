@@ -78,10 +78,6 @@ class CreateSingleNote extends Component{
         }
     }
 
-    test(event) {
-        debugger
-    }
-
     render() {
         let options = this.state.products.map((product, id) => (
             <option key={product._id} value={product._id}>
