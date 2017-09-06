@@ -12,6 +12,8 @@ export default class Note extends Component {
             combined: []
         }
     }
+
+    
     
     mergeProducts(products, quantity) {
         let combined = []
@@ -45,8 +47,6 @@ export default class Note extends Component {
             combined
         })
     }
-
-    component
 
     setDay(date) {
         let result = ''
